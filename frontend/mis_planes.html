@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Explorar planes</title>
+  <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="barra_navegacion.css">
+  <link rel="stylesheet" href="matchup.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+</head>
+
+<body class="mis-planes-p page-transition">
+
+  <div class="main-bg">
+
+    <nav class="navbar topbar">
+
+      <div class="container-fluid">
+
+        <div class="logo-area">
+          <a href="pantalla_principal.html">
+            <img src="imagenes/logo_blanco.png" class="logo-icon">
+          </a>
+          <a href="pantalla_principal.html">
+            <span class="logo-text">MATCH-UP</span>
+          </a>
+        </div>
+
+        <div class="nav-right">
+
+          <a class="nav-link" href="explorar.html">Explorar</a>
+          <a class="nav-link" href="mis_planes.html"><u>Mis planes</u></a>
+          <a class="nav-link" href="chat.html">Mensajes</a>
+
+          <div class="dropdown bell">
+
+            <div role="button" data-bs-toggle="dropdown">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5" viewBox="0 0 16 16">
+                <path
+                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+              </svg>
+
+            </div>
+
+            <div class="dropdown-menu dropdown-menu-end notif-menu">
+
+              <div class="notif-header">
+                <span>Notificaciones</span>
+                <span>⚙</span>
+              </div>
+
+              <div class="notif-section">
+                <small>Importante</small>
+
+                <p><b>Lucia_12</b> te ha enviado un mensaje</p>
+                <p><b>Victor_xcx</b> te ha enviado un mensaje</p>
+              </div>
+
+              <div class="notif-section">
+                <small>Más notificaciones</small>
+
+                <p>Novedades al añadir gente nueva a tus grupos</p>
+                <p>Nuevo plan cerca de ti: Visita al Museo del Prado</p>
+                <p>Nueva actualización en tu plan: Concierto de Oasis en el Movistar Arena</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="dropdown user-box">
+
+            <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button" data-bs-toggle="dropdown">
+
+              <span id="nombreUsuario">Usuario</span>
+              <img id="fotoPerfil" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+            </div>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+
+              <li><a class="dropdown-item" href="configurar_perfil.html">Perfil</a></li>
+              <li><a class="dropdown-item" href="chat.html">Mensajes</a></li>
+              <li><a class="dropdown-item" href="calendario.html">Calendario</a></li>
+              <li><a class="dropdown-item" href="ajustes.html">Ajustes</a></li>
+
+              <hr>
+
+              <li><a class="dropdown-item" href="inicio_sesion.html">Cerrar sesión</a></li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+
+    <!-- Contenido -->
+    <div class="mis-planes-container container-fluid">
+
+      <div class="mis-planes-header">
+
+        <div>
+
+          <h2 class="titulo">Mis planes</h2>
+
+          <p>
+            Revisa todos tus planes aquí
+          </p>
+
+        </div>
+
+        <div class="create-group-banner">
+
+          <span>Crea tu propio grupo</span>
+
+          <p>
+            ¿Quieres ampliar tu círculo de amigos?
+            ¡Crea un grupo y conecta con gente nueva!
+          </p>
+
+          <a href="crear_grupo.html" class="btn btn-primary">
+            Crear Grupo
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- CATEGORÍAS -->
+      <ul class="nav nav-tabs planes-tabs">
+
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#activos">
+            Planes activos
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#creados">
+            Planes creados por ti
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#historial">
+            Historial
+          </button>
+        </li>
+
+      </ul>
+
+
+      <div class="tab-content">
+
+        <!-- PLANES ACTIVOS -->
+        <div class="tab-pane fade show active" id="activos">
+
+          <div class="planes-box row">
+
+            <!-- LISTA PLANES -->
+            <div class="col-lg-7 planes-list">
+
+              <div class="empty-state">
+
+                <h4>No tienes planes activos</h4>
+
+                <p>
+                  De momento no tienes ningún plan activo.
+                  Únete a uno nuevo :)
+                </p>
+
+                <a href="explorar.html" class="btn btn-primary">
+                  Explorar planes
+                </a>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- CALENDARIO -->
+            <div class="col-lg-5 calendario-box">
+
+              <div id="calendar"></div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- PLANES CREADOS POR TI -->
+        <!-- PLANES CREADOS POR TI -->
+        <div class="tab-pane fade" id="creados">
+
+          <div class="planes-box row">
+
+            <div class="col-lg-7 planes-list">
+
+              <div class="empty-state">
+
+                <h4>No has creado ningún plan</h4>
+
+                <p>
+                  De momento no has creado ningún plan.
+                  Aprovecha y crea uno nuevo :)
+                </p>
+
+                <a href="crear_plan.html" class="btn btn-primary">
+                  Crear plan
+                </a>
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-5 calendario-box">
+              <div id="calendar2"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- HISTORIAL -->
+        <div class="tab-pane fade" id="historial">
+
+          <div class="historial-list">
+
+            <div class="empty-state">
+
+              <h4>Sin historial todavía</h4>
+
+              <p>
+                Todavía no tienes historial de planes.
+                ¡Empieza tu primera aventura!
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <script>
+
+          document.addEventListener('DOMContentLoaded', function () {
+
+            let calendar1;
+            let calendar2;
+
+            // CALENDARIO PLANES ACTIVOS
+            let calendarEl = document.getElementById('calendar');
+
+            calendar1 = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth',
+              locale: 'es',
+              events: [
+                {
+                  title: 'Escapada Costa Rica',
+                  start: '2026-02-04'
+                },
+                {
+                  title: 'Viaje Caribe',
+                  start: '2026-02-20'
+                }
+              ]
+            });
+
+            calendar1.render();
+
+
+            // CUANDO SE ABRE EL TAB "PLANES CREADOS POR TI"
+            let tabCreado = document.querySelector('button[data-bs-target="#creados"]');
+
+            tabCreado.addEventListener('shown.bs.tab', function () {
+
+              if (!calendar2) {
+
+                let calendarEl2 = document.getElementById('calendar2');
+
+                calendar2 = new FullCalendar.Calendar(calendarEl2, {
+                  initialView: 'dayGridMonth',
+                  locale: 'es'
+                });
+
+                calendar2.render();
+
+              }
+
+            });
+
+          });
+
+        </script>
+
+
+
+
+        <script>
+
+          document.addEventListener("DOMContentLoaded", function () {
+
+            const usuarioLogueado = JSON.parse(
+              localStorage.getItem("usuarioLogueado")
+            );
+
+            if (!usuarioLogueado) {
+              window.location.href = "inicio_sesion.html";
+              return;
+            }
+
+            // NOMBRE
+            document.getElementById("nombreUsuario").textContent =
+              usuarioLogueado.nombreUsuario || usuarioLogueado.nombre;
+
+            // FOTO
+            if (usuarioLogueado.fotoPerfil) {
+              document.getElementById("fotoPerfil").src =
+                "http://localhost:8080/fotos_perfil/" +
+                usuarioLogueado.fotoPerfil;
+            }
+
+          });
+
+        </script>
+
+
+        <script>
+
+          function planFinalizado(fechaPlan) {
+
+            if (!fechaPlan) return false;
+
+            const fecha = new Date(fechaPlan);
+
+            const ahora = new Date();
+
+            const diferenciaHoras =
+              (ahora - fecha) / (1000 * 60 * 60);
+
+            return diferenciaHoras >= 24;
+          }
+
+        </script>
+
+
+        <script>
+
+          document.addEventListener("DOMContentLoaded", async function () {
+
+            const usuarioLogueado = JSON.parse(
+              localStorage.getItem("usuarioLogueado")
+            );
+
+            if (!usuarioLogueado) {
+              window.location.href = "inicio_sesion.html";
+              return;
+            }
+
+            try {
+
+              // =========================
+              // PETICIONES
+              // =========================
+
+              const responseActivos = await fetch(
+                `http://localhost:8080/planes/activos/${usuarioLogueado.id}`
+              );
+
+              const responseHistorial = await fetch(
+                `http://localhost:8080/planes/historial/${usuarioLogueado.id}`
+              );
+
+              const planesActivos = await responseActivos.json();
+              const planesHistorial = await responseHistorial.json();
+
+              // =========================
+              // CONTENEDORES
+              // =========================
+
+              const contenedorCreados =
+                document.querySelector("#creados .planes-list");
+
+              const contenedorActivos =
+                document.querySelector("#activos .planes-list");
+
+              const contenedorHistorial =
+                document.querySelector("#historial .historial-list");
+
+              // =========================
+              // LIMPIAR
+              // =========================
+
+              contenedorCreados.innerHTML = "";
+              contenedorActivos.innerHTML = "";
+              contenedorHistorial.innerHTML = "";
+
+              let hayActivos = false;
+              let hayCreados = false;
+              let hayHistorial = false;
+
+              // =========================
+              // ACTIVOS
+              // =========================
+
+              planesActivos.forEach(plan => {
+                const finalizado = planFinalizado(plan.fecha);
+
+                const imagenPlan = plan.imagen
+                  ? "http://localhost:8080/fotos_plan/" + plan.imagen
+                  : "imagenes/Principal_Match_Up.png";
+
+                const cardHTML = `
+                <div class="plan-card">
+
+                    <img src="${imagenPlan}">
+
+                    <div class="plan-overlay">
+
+                        <div>
+                            <h3>${plan.titulo}</h3>
+                            <p>${plan.descripcion}</p>
+                        </div>
+
+                        ${!finalizado ? `
+
+                          <a href="consultar_plan.html?id=${plan.id}" 
+                            class="btn consultar-btn">
+
+                              Consultar →
+
+                          </a>
+
+                          ` : `
+
+                          <button class="btn consultar-btn" disabled>
+                              Plan finalizado
+                          </button>
+
+                          `}
+
+                    </div>
+
+                </div>
+            `;
+
+                // ACTIVOS
+                contenedorActivos.innerHTML += cardHTML;
+                hayActivos = true;
+
+                // CREADOS POR TI
+                if (
+                  plan.creador &&
+                  plan.creador.id === usuarioLogueado.id
+                ) {
+
+                  contenedorCreados.innerHTML += cardHTML;
+                  hayCreados = true;
+                }
+
+              });
+
+              // =========================
+              // HISTORIAL
+              // =========================
+
+              planesHistorial.forEach(plan => {
+                const finalizado = planFinalizado(plan.fecha);
+
+                const imagenPlan = plan.imagen
+                  ? "http://localhost:8080/fotos_plan/" + plan.imagen
+                  : "imagenes/Principal_Match_Up.png";
+
+                const cardHTML = `
+                <div class="plan-card">
+
+                    <img src="${imagenPlan}">
+
+                    <div class="plan-overlay">
+
+                        <div>
+                            <h3>${plan.titulo}</h3>
+                            <p>${plan.descripcion}</p>
+                        </div>
+
+                        ${!finalizado ? `
+
+                            <a href="consultar_plan.html?id=${plan.id}" 
+                              class="btn consultar-btn">
+
+                                Consultar →
+
+                            </a>
+
+                            ` : `
+
+                            <button class="btn consultar-btn" disabled>
+                                Plan finalizado
+                            </button>
+
+                            `}
+
+                    </div>
+
+                </div>
+            `;
+
+                contenedorHistorial.innerHTML += cardHTML;
+                hayHistorial = true;
+
+              });
+
+              // =========================
+              // EMPTY STATES
+              // =========================
+
+              if (!hayActivos) {
+
+                contenedorActivos.innerHTML = `
+                <div class="empty-state">
+
+                    <h4>No tienes planes activos</h4>
+
+                    <p>
+                        De momento no tienes ningún plan activo.
+                    </p>
+                     <a href="explorar.html" class="btn btn-primary">
+                        Explorar planes
+                    </a>
+
+                </div>
+            `;
+              }
+
+              if (!hayCreados) {
+
+                contenedorCreados.innerHTML = `
+                <div class="empty-state">
+
+                    <h4>No has creado ningún plan</h4>
+
+                    <p>
+                        Todavía no has creado ningún plan.
+                    </p>
+
+                    <a href="crear_plan.html" class="btn btn-primary">
+                        Crear plan
+                    </a>
+
+                </div>
+            `;
+              }
+
+              if (!hayHistorial) {
+
+                contenedorHistorial.innerHTML = `
+                <div class="empty-state">
+
+                    <h4>Sin historial todavía</h4>
+
+                    <p>
+                        Aún no tienes planes finalizados.
+                    </p>
+
+                </div>
+            `;
+              }
+
+            } catch (error) {
+
+              console.error("ERROR:", error);
+            }
+
+          });
+
+        </script>
+      </div>
+
+
+</body>
+
+</html>

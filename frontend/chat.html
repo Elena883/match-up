@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mensajes</title>
+
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="barra_navegacion.css">
+    <link rel="stylesheet" href="matchup.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body class="chat-p page-transition">
+
+    <div class="main-bg">
+
+        <!-- NAVBAR -->
+        <nav class="navbar topbar">
+
+            <div class="container-fluid">
+
+                <div class="logo-area">
+
+                    <a href="pantalla_principal.html">
+                        <img src="imagenes/logo_blanco.png" class="logo-icon">
+                    </a>
+
+                    <a href="pantalla_principal.html">
+                        <span class="logo-text">MATCH-UP</span>
+                    </a>
+
+                </div>
+
+                <div class="nav-right">
+
+                    <a class="nav-link" href="explorar.html">Explorar</a>
+
+                    <a class="nav-link" href="mis_planes.html">Mis planes</a>
+
+                    <a class="nav-link" href="chat.html">
+                        <u>Mensajes</u>
+                    </a>
+
+                    <div class="dropdown bell">
+
+                        <div role="button" data-bs-toggle="dropdown">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5"
+                                viewBox="0 0 16 16">
+
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dropdown user-box">
+
+                        <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown">
+
+                            <span id="nombreUsuario">
+                                Usuario
+                            </span>
+
+                            <img id="fotoPerfil" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+                        </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="configurar_perfil.html">
+                                    Perfil
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="chat.html">
+                                    Mensajes
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="calendario.html">
+                                    Calendario
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="ajustes.html">
+                                    Ajustes
+                                </a>
+                            </li>
+
+                            <hr>
+
+                            <li>
+                                <a class="dropdown-item" href="inicio_sesion.html">
+                                    Cerrar sesión
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+        <!-- CHAT -->
+
+        <div class="chat-wrapper">
+
+            <!-- SIDEBAR -->
+
+            <div class="chat-sidebar">
+
+                <!-- BUSCADOR -->
+
+                <div class="chat-search">
+
+                    <input type="text" id="buscadorChats" placeholder="Buscar conversación">
+
+                </div>
+
+
+                <!-- LISTA CHATS -->
+
+                <div class="chat-list" id="chatList">
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ZONA CHAT -->
+
+            <div class="chat-content">
+
+                <!-- HEADER -->
+
+                <div class="chat-header">
+
+                    <div class="chat-user">
+
+                        <img id="fotoGrupoHeader" src="imagenes/foto_perfil_por_defecto.jpg" class="chat-user-img">
+
+                        <div>
+                            <h4 id="nombreGrupoHeader">
+                                Aun no tienes ningún grupo.
+                            </h4>
+
+                            <span id="miembrosGrupoHeader">
+                                ¡Unete a alguno!
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chat-actions dropdown">
+
+                        <button class="dots-btn" data-bs-toggle="dropdown">
+
+                            ⋮
+
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" id="verGrupoBtn">
+                                    Ver grupo
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item">
+                                    Silenciar chat
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger">
+                                    Reportar
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MENSAJES -->
+
+                <div class="messages-area" id="messagesArea">
+
+                </div>
+
+
+
+                <!-- INPUT -->
+
+                <div class="chat-input-area">
+
+                    <input type="text" id="mensajeInput" placeholder="Escribe un mensaje...">
+
+                    <button class="send-btn" id="sendBtn">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+                            class="bi bi-send-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z" />
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const usuarioLogueado = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                if (usuarioLogueado) {
+
+                    document.getElementById("nombreUsuario").textContent =
+                        usuarioLogueado.nombreUsuario || usuarioLogueado.nombre;
+
+                    if (usuarioLogueado.fotoPerfil) {
+
+                        document.getElementById("fotoPerfil").src =
+                            "http://localhost:8080/fotos_perfil/" +
+                            usuarioLogueado.fotoPerfil;
+                    }
+                }
+
+            });
+
+
+
+            document
+                .getElementById("verGrupoBtn")
+                .addEventListener("click", () => {
+
+                    if (!idGrupo) return;
+
+                    window.location.href =
+                        `consultar_grupo.html?id=${idGrupo}`;
+                });
+        </script>
+
+        <script>
+
+            const API = "http://localhost:8080";
+
+            const usuarioLogueado =
+                JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+            // SIMULAMOS GRUPO ACTUAL
+            // luego será dinámico con ?grupo=1
+
+            let idGrupo = null;
+
+            let ultimoMensajeId = 0;
+            let ultimoMensajesPorGrupo = {};
+
+            // =========================
+            // CARGAR MENSAJES
+            // =========================
+
+            async function cargarMensajes() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API}/mensajes/grupo/${idGrupo}`
+                        );
+
+                    const mensajes =
+                        await response.json();
+
+                    const area =
+                        document.getElementById("messagesArea");
+
+                    area.innerHTML = "";
+
+                    mensajes.forEach(mensaje => {
+
+                        pintarMensaje(mensaje);
+
+                        ultimoMensajeId = mensaje.id;
+
+
+                        const chatActivo =
+                            document.querySelector(".active-chat");
+
+                        const grupoActivo =
+                            chatActivo?.getAttribute("data-grupo-id");
+
+                        if (grupoActivo != idGrupo) {
+
+                            const chat =
+                                document.querySelector(
+                                    `[data-grupo-id="${idGrupo}"]`
+                                );
+
+                            if (chat) {
+
+                                const dot =
+                                    chat.querySelector(".unread-dot");
+
+                                dot.classList.remove("hidden");
+                            }
+                        }
+                    });
+
+                    scrollBottom();
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+            }
+
+            // =========================
+            // BUSCAR MENSAJES
+            // =========================
+
+
+            document
+                .getElementById("buscadorChats")
+                .addEventListener("input", filtrarChats);
+
+
+
+            function filtrarChats() {
+
+                const texto =
+                    document.getElementById("buscadorChats")
+                        .value
+                        .toLowerCase();
+
+                const chats =
+                    document.querySelectorAll(".chat-item");
+
+                chats.forEach(chat => {
+
+                    const nombre =
+                        chat.textContent.toLowerCase();
+
+                    if (nombre.includes(texto)) {
+
+                        chat.style.display = "flex";
+
+                    } else {
+
+                        chat.style.display = "none";
+                    }
+                });
+            }
+
+
+            // =========================
+            // PONER HORA MENSAJE
+            // =========================
+            function formatearHora(fecha) {
+
+                const hora = new Date(fecha);
+
+                return hora.toLocaleTimeString(
+                    "es-ES",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+            }
+
+            // =========================
+            // PINTAR MENSAJE
+            // =========================
+
+            function pintarMensaje(mensaje) {
+                console.log(mensaje);
+                const area =
+                    document.getElementById("messagesArea");
+
+                const esMio =
+                    mensaje.usuario.id === usuarioLogueado.id;
+
+                const foto =
+                    mensaje.usuario.fotoPerfil
+                        ? `http://localhost:8080/fotos_perfil/${mensaje.usuario.fotoPerfil}`
+                        : "imagenes/foto_perfil_por_defecto.jpg";
+
+                if (esMio) {
+
+                    area.innerHTML += `
+
+                <div class="message my-message">
+
+                    <div class="message-bubble">
+
+                        ${mensaje.contenido}
+
+                        <div class="message-time">
+                            ${formatearHora(mensaje.fechaEnvio)}
+                        </div>
+
+                    </div>
+
+                </div>
+                `;
+
+                } else {
+
+                    area.innerHTML += `
+
+            <div class="message other-message">
+
+                <img src="${foto}"
+                    class="message-avatar">
+
+                <div class="message-content">
+
+                    <span class="message-name">
+
+                        ${mensaje.usuario.nombreUsuario}
+
+                    </span>
+
+                    <div class="message-bubble">
+
+                        ${mensaje.contenido}
+
+                        <div class="message-time">
+                            ${formatearHora(mensaje.fechaEnvio)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
+                }
+            }
+
+            // =========================
+            // ENVIAR MENSAJE
+            // =========================
+
+            async function enviarMensaje() {
+
+                const input =
+                    document.getElementById("mensajeInput");
+
+                const contenido =
+                    input.value.trim();
+
+                if (contenido === "") return;
+
+                try {
+
+                    await fetch(`${API}/mensajes`, {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            idUsuario: usuarioLogueado.id,
+
+                            idGrupo: idGrupo,
+
+                            contenido: contenido
+                        })
+                    });
+
+                    input.value = "";
+
+                    cargarMensajes();
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+            }
+
+            // =========================
+            // POLLING
+            // =========================
+
+            async function buscarMensajesNuevos() {
+                if (!idGrupo) return;
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API}/mensajes/grupo/${idGrupo}/nuevos?ultimoId=${ultimoMensajeId}`
+                        );
+
+                    const mensajes =
+                        await response.json();
+
+                    if (mensajes.length > 0) {
+
+                        mensajes.forEach(mensaje => {
+
+                            pintarMensaje(mensaje);
+
+                            ultimoMensajeId = mensaje.id;
+                        });
+
+                        scrollBottom();
+                    }
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+            }
+
+
+            async function actualizarListaChats() {
+
+                const chats =
+                    document.querySelectorAll(".chat-item");
+
+                for (const chat of chats) {
+
+                    const grupoId =
+                        chat.getAttribute("data-grupo-id");
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                `${API}/mensajes/grupo/${grupoId}/ultimo`
+                            );
+
+                        const ultimoMensaje =
+                            await response.json();
+
+                        if (!ultimoMensaje) continue;
+
+                        const ultimoGuardado =
+                            ultimoMensajesPorGrupo[grupoId];
+
+                        // NUEVO MENSAJE
+                        if (ultimoMensaje.id != ultimoGuardado) {
+
+                            ultimoMensajesPorGrupo[grupoId] =
+                                ultimoMensaje.id;
+
+                            // ACTUALIZAR TEXTO
+                            chat.querySelector(".ultimo-mensaje")
+                                .textContent =
+                                ultimoMensaje.contenido;
+
+                            // ACTUALIZAR HORA
+                            chat.querySelector(".chat-hour")
+                                .textContent =
+                                formatearHora(
+                                    ultimoMensaje.fechaEnvio
+                                );
+
+                            // MOSTRAR BOLITA
+                            if (parseInt(grupoId) !== idGrupo) {
+
+                                const dot =
+                                    chat.querySelector(".unread-dot");
+
+                                dot.classList.remove("hidden");
+                            }
+                        }
+
+                    } catch (error) {
+
+                        console.error(error);
+                    }
+                }
+            }
+
+
+
+            // =========================
+            // SCROLL ABAJO
+            // =========================
+
+            function scrollBottom() {
+
+                const area =
+                    document.getElementById("messagesArea");
+
+                area.scrollTop =
+                    area.scrollHeight;
+            }
+
+            // =========================
+            // EVENTOS
+            // =========================
+
+            document
+                .getElementById("sendBtn")
+                .addEventListener(
+                    "click",
+                    enviarMensaje
+                );
+
+            document
+                .getElementById("mensajeInput")
+                .addEventListener(
+                    "keypress",
+                    function (e) {
+
+                        if (e.key === "Enter") {
+
+                            enviarMensaje();
+                        }
+                    }
+                );
+
+
+            // =========================
+            // CARGAR GRUPOS
+            // =========================
+
+            async function cargarGrupos() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API}/mensajes/mis-grupos/${usuarioLogueado.id}`
+                        );
+
+                    const grupos =
+                        await response.json();
+
+                    const chatList =
+                        document.getElementById("chatList");
+
+                    chatList.innerHTML = "";
+
+                    for (const item of grupos) {
+
+                        const grupo = item.grupo;
+
+                        const fotoGrupo = grupo.imagen
+                            ? `http://localhost:8080/fotos_grupo/${grupo.imagen}`
+                            : "imagenes/foto_perfil_por_defecto.jpg";
+
+                        // =========================
+                        // ÚLTIMO MENSAJE
+                        // =========================
+
+                        let ultimoMensajeTexto =
+                            "Sin mensajes todavía";
+
+                        let ultimaHora = "";
+
+                        try {
+
+                            const responseUltimo =
+                                await fetch(
+                                    `${API}/mensajes/grupo/${grupo.id}/ultimo`
+                                );
+
+                            const ultimoMensaje =
+                                await responseUltimo.json();
+
+                            if (ultimoMensaje) {
+
+                                ultimoMensajeTexto =
+                                    ultimoMensaje.contenido;
+
+                                ultimaHora =
+                                    formatearHora(
+                                        ultimoMensaje.fechaEnvio
+                                    );
+
+                                ultimoMensajesPorGrupo[grupo.id] =
+                                    ultimoMensaje.id;
+                            }
+
+
+                        } catch (error) {
+
+                            console.error(error);
+                        }
+
+                        chatList.innerHTML += `
+
+                        <div class="chat-item"
+                            data-grupo-id="${grupo.id}"
+                            onclick='abrirGrupo(${JSON.stringify(grupo)}, this)'>
+
+                            <img src="${fotoGrupo}"
+                                class="chat-avatar">
+
+                            <div class="chat-info">
+
+                                <div class="chat-top-row">
+
+                                    <h5>
+                                        ${grupo.nombre}
+                                    </h5>
+
+                                    <span class="chat-hour">
+                                        ${ultimaHora}
+                                    </span>
+
+                                </div>
+
+                                <div class="chat-bottom-row">
+
+                                    <p class="ultimo-mensaje">
+                                        ${ultimoMensajeTexto}
+                                    </p>
+
+                                    <span class="unread-dot hidden"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        `;
+                    }
+
+                    // ABRIR PRIMER GRUPO AUTOMÁTICO
+
+                    if (grupos.length > 0) {
+
+                        abrirGrupo(grupos[0].grupo);
+                    }
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+            }
+
+
+
+
+
+            // =========================
+            // ABRIR GRUPO
+            // =========================
+
+            async function abrirGrupo(grupo, elemento) {
+
+                idGrupo = grupo.id;
+
+                document.getElementById("nombreGrupoHeader")
+                    .textContent = grupo.nombre;
+
+                try {
+
+                    const responseMiembros =
+                        await fetch(
+                            `${API}/mensajes/grupo/${grupo.id}/miembros`
+                        );
+
+                    const numeroMiembros =
+                        await responseMiembros.json();
+
+                    document.getElementById("miembrosGrupoHeader")
+                        .textContent =
+                        `${numeroMiembros} miembros`;
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    document.getElementById("miembrosGrupoHeader")
+                        .textContent =
+                        "0 miembros";
+                }
+
+                document.getElementById("fotoGrupoHeader")
+                    .src =
+                    grupo.imagen
+                        ? `http://localhost:8080/fotos_grupo/${grupo.imagen}`
+                        : "imagenes/foto_perfil_por_defecto.jpg";
+
+
+                document
+                    .querySelectorAll(".chat-item")
+                    .forEach(chat =>
+                        chat.classList.remove("active-chat")
+                    );
+
+                if (elemento) {
+                    elemento.classList.add("active-chat");
+                }
+
+                const dot =
+                    elemento?.querySelector(".unread-dot");
+
+                if (dot) {
+
+                    dot.classList.add("hidden");
+                }
+
+
+                ultimoMensajeId = 0;
+
+                await cargarMensajes();
+            }
+
+
+            // =========================
+            // INICIO
+            // =========================
+
+            cargarGrupos();
+
+            setInterval(
+                buscarMensajesNuevos,
+                2000
+            );
+
+            setInterval(
+                actualizarListaChats,
+                3000
+            );
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>

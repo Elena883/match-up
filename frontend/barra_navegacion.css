@@ -1,0 +1,99 @@
+/* NAVBAR */
+
+.a {
+  text-decoration: none;
+}
+
+.logo-area a {
+  text-decoration: none;
+}
+
+.topbar {
+  background: #004aad;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 55px;
+}
+
+.logo-text {
+  color: white;
+  font-size: 35px;
+  font-weight: 900;
+}
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-link {
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bell {
+  margin-left: 20px;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -20px;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* NOTIFICACIONES */
+
+.notif-menu {
+  width: 300px;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+.notif-section {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.notif-section small {
+  color: gray;
+}
+
+.notif-section p {
+  margin: 6px 0;
+  font-size: 14px;
+}

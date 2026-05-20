@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configura tu perfil</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="matchup.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="empezar-p page-transition">
+
+    <div class="container-fluid profile-background">
+        <div class="container profile-container">
+
+            <div class="profile-header d-flex justify-content-between align-items-center">
+
+                <div>
+                    <h1 class="title">Configura tu perfil</h1>
+                    <p class="subtitle">Completa tu perfil y elige tus intereses</p>
+                </div>
+
+                <div id="formToast" class="toast interest-toast text-white border-0" data-bs-delay="3000">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toastMessage">
+                            Completa todos los campos obligatorios *
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                            data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+
+                <div class="step">Paso 1/2</div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <!-- FOTO PERFIL -->
+                <div class="row">
+
+                    <div class="col-md-2 text-center">
+
+                        <div class="profile-image" id="profileUpload">
+
+                            <img id="profilePreview" src="" style="display:none;">
+
+                            <svg id="defaultIcon" xmlns="http://www.w3.org/2000/svg" width="120" height="120"
+                                fill="#989ba0" class="bi bi-person-circle" viewBox="0 0 16 16">
+
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+
+                            <div class="upload-icon">+</div>
+
+                        </div>
+
+                        <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+                        <button id="deletePhoto" class="btn btn-primary btn-sm mt-2">
+                            Borrar Foto
+                        </button>
+
+                    </div>
+
+
+                    <!-- DESCRIPCIÓN -->
+                    <div class="col-md-10">
+
+                        <label class="section-title">Descripción</label>
+
+                        <textarea class="form-control description-box"
+                            placeholder="Ej: Me encanta viajar, probar restaurantes y hacer planes improvisados"></textarea>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+                <!-- INTERESES -->
+                <div class="interest-header">
+                    <h5 class="section-title">Elige tus intereses - </h5>
+                    <span class="interest-subtitle">
+                        Elige entre dos y nueve
+                    </span>
+                </div>
+
+                <div class="interests">
+
+                    <button class="btn interest">⚽ Deporte</button>
+                    <button class="btn interest">🥾 Senderismo</button>
+                    <button class="btn interest">🎤 Conciertos</button>
+                    <button class="btn interest">🎬 Cine</button>
+                    <button class="btn interest">🎵 Música</button>
+                    <button class="btn interest">✈️ Viajar</button>
+                    <button class="btn interest">🧘 Bienestar</button>
+                    <button class="btn interest">🎮 Juegos</button>
+                    <button class="btn interest">🍴 Gastronomía</button>
+                    <button class="btn interest">🧘 Yoga</button>
+                    <button class="btn interest">🎨 Arte</button>
+                    <button class="btn interest">🏛 Museo</button>
+                    <button class="btn interest">📷 Fotografía</button>
+                    <button class="btn interest">🌍 Idiomas</button>
+                    <button class="btn interest">💃 Baile</button>
+                    <button class="btn interest">🎤 Cantar</button>
+                    <button class="btn interest">🎮 Videojuegos</button>
+                    <button class="btn interest">🌳 Naturaleza</button>
+                    <button class="btn interest">🐶 Animales</button>
+                    <button class="btn interest">📚 Lectura</button>
+                    <button class="btn interest">💻 Tecnología</button>
+                    <button class="btn interest">🍸 Salir</button>
+                    <button class="btn interest">👗 Moda</button>
+
+                </div>
+
+                <hr>
+
+
+                <!-- DATOS -->
+                <div class="row form-row">
+
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Nombre*">
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="date" class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <select id="ciudadSelect" class="form-control">
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 genero">
+                        <select class="form-control">
+                            <option>Mujer</option>
+                            <option>Hombre</option>
+                            <option>Otro</option>
+                            <option>Prefiero no decirlo</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="continue-container">
+                    <button id="continueBtn" class="btn continue-btn">
+                        Continuar
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- TOAST -->
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+
+                <div id="interestToast" class="toast interest-toast text-white border-0" data-bs-delay="3000">
+
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ✔ Has alcanzado el máximo de 9 intereses
+                        </div>
+
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                            data-bs-dismiss="toast"></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        let fotoSeleccionada = null;
+
+        // =========================
+        // INTERESES
+        // =========================
+
+        const interests = document.querySelectorAll(".interest");
+
+        interests.forEach(button => {
+            button.addEventListener("click", function () {
+
+                const selected = document.querySelectorAll(".interest.active");
+
+                if (this.classList.contains("active")) {
+                    this.classList.remove("active");
+                } else {
+                    if (selected.length < 9) {
+                        this.classList.add("active");
+                    } else {
+                        const toast = new bootstrap.Toast(
+                            document.getElementById("interestToast")
+                        );
+                        toast.show();
+                    }
+                }
+            });
+        });
+
+
+        // =========================
+        // CONTROL EDAD (+18)
+        // =========================
+
+        const today = new Date();
+
+        const minAgeDate = new Date(
+            today.getFullYear() - 18,
+            today.getMonth(),
+            today.getDate()
+        );
+
+        const maxDate = minAgeDate.toISOString().split("T")[0];
+
+        const birthdateInput = document.querySelector('input[type="date"]');
+        birthdateInput.setAttribute("max", maxDate);
+
+
+        // =========================
+        // FOTO PERFIL
+        // =========================
+
+        const profileUpload = document.getElementById("profileUpload");
+        const fileInput = document.getElementById("fileInput");
+        const preview = document.getElementById("profilePreview");
+        const defaultIcon = document.getElementById("defaultIcon");
+
+        profileUpload.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (file) {
+
+                fotoSeleccionada = file;
+
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    const base64 = e.target.result;
+
+                    preview.src = base64;
+                    preview.style.display = "block";
+                    defaultIcon.style.display = "none";
+
+                    // IMPORTANTE:
+                    // guardar SOLO en clave separada
+                    localStorage.setItem("fotoPerfil", base64);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+        // =========================
+        // BORRAR FOTO
+        // =========================
+
+        const deletePhoto = document.getElementById("deletePhoto");
+
+        deletePhoto.addEventListener("click", function () {
+
+            preview.src = "";
+            preview.style.display = "none";
+            defaultIcon.style.display = "block";
+
+            fileInput.value = "";
+            fotoSeleccionada = null;
+
+            // eliminar SOLO esta clave
+            localStorage.removeItem("fotoPerfil");
+        });
+
+
+        // =========================
+        // BOTÓN CONTINUAR
+        // =========================
+
+        const continueBtn = document.getElementById("continueBtn");
+
+        const nameInput = document.querySelector(
+            'input[placeholder="Nombre*"]'
+        );
+
+        const ciudadSelect = document.getElementById("ciudadSelect");
+        const bioInput = document.querySelector(".description-box");
+        const generoSelect = document.querySelector(".genero select");
+
+        continueBtn.addEventListener("click", function () {
+
+            let usuario =
+                JSON.parse(localStorage.getItem("registroUsuario")) || {};
+
+            const selectedInterests =
+                document.querySelectorAll(".interest.active");
+
+            const toastElement = document.getElementById("formToast");
+            const toastMessage = document.getElementById("toastMessage");
+            const toast = new bootstrap.Toast(toastElement);
+
+
+            // VALIDACIONES
+
+            if (nameInput.value.trim() === "") {
+                toastMessage.textContent = "Introduce tu nombre";
+                toast.show();
+                return;
+            }
+
+            if (birthdateInput.value === "") {
+                toastMessage.textContent =
+                    "Selecciona tu fecha de nacimiento";
+                toast.show();
+                return;
+            }
+
+            if (ciudadSelect.value === "") {
+
+                toastMessage.textContent =
+                    "Selecciona una ciudad";
+
+                toast.show();
+
+                return;
+            }
+
+            if (selectedInterests.length < 2) {
+                toastMessage.textContent =
+                    "Selecciona al menos 2 intereses";
+                toast.show();
+                return;
+            }
+
+
+            // INTERESES SIN EMOJIS
+
+            const interesesArray = [];
+
+            selectedInterests.forEach(btn => {
+
+                let textoLimpio = btn.textContent.trim();
+
+                textoLimpio = textoLimpio
+                    .replace(/^[^\w\s]+/, "")
+                    .trim();
+
+                interesesArray.push(textoLimpio);
+            });
+
+
+            // GUARDAR DATOS
+
+            usuario.nombre = nameInput.value;
+            usuario.fechaNacimiento = birthdateInput.value;
+            usuario.bio = bioInput.value;
+            usuario.idCiudad = ciudadSelect.value;
+            usuario.intereses = interesesArray;
+            usuario.genero = generoSelect.value;
+
+            localStorage.setItem(
+                "registroUsuario",
+                JSON.stringify(usuario)
+            );
+
+
+            // PASO 2
+
+            window.location.href = "perfil_empezar_paso_2.html";
+        });
+
+
+
+
+
+        // =========================
+        // CARGAR CIUDADES
+        // =========================
+
+        async function cargarCiudades() {
+
+            try {
+
+                const response =
+                    await fetch("http://localhost:8080/ciudades");
+
+                const ciudades = await response.json();
+
+                const ciudadSelect =
+                    document.getElementById("ciudadSelect");
+
+                ciudadSelect.innerHTML =
+                    '<option value="">Selecciona una ciudad</option>';
+
+                ciudades.forEach(ciudad => {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = ciudad.id_ciudad;
+
+                    option.textContent =
+                        `${ciudad.nombre}, ${ciudad.pais.nombre}`;
+
+                    ciudadSelect.appendChild(option);
+                });
+
+            } catch (error) {
+
+                console.error(
+                    "Error cargando ciudades:",
+                    error
+                );
+            }
+        }
+
+        cargarCiudades();
+
+    </script>
+
+</body>
+
+</html>

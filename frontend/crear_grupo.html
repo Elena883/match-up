@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crear grupo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="barra_navegacion.css">
+    <link rel="stylesheet" href="matchup.css">
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="crear-grupo-p page-transition">
+
+    <div class="main-bg">
+
+        <!-- NAVBAR -->
+        <nav class="navbar topbar">
+            <div class="container-fluid">
+
+                <div class="logo-area">
+                    <a href="pantalla_principal.html">
+                        <img src="imagenes/logo_blanco.png" class="logo-icon">
+                    </a>
+                    <a href="pantalla_principal.html">
+                        <span class="logo-text">MATCH-UP</span>
+                    </a>
+                </div>
+
+                <div class="nav-right">
+
+                    <a class="nav-link" href="explorar.html">Explorar</a>
+                    <a class="nav-link" href="mis_planes.html">Mis planes</a>
+                    <a class="nav-link" href="chat.html">Mensajes</a>
+
+                    <div class="dropdown bell">
+
+                        <div role="button" data-bs-toggle="dropdown">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-end notif-menu">
+
+                            <div class="notif-header">
+                                <span>Notificaciones</span>
+                                <span>⚙</span>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Importante</small>
+
+                                <p><b>Lucia_12</b> te ha enviado un mensaje</p>
+                                <p><b>Victor_xcx</b> te ha enviado un mensaje</p>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Más notificaciones</small>
+
+                                <p>Novedades al añadir gente nueva a tus grupos</p>
+                                <p>Nuevo plan cerca de ti: Visita al Museo del Prado</p>
+                                <p>Nueva actualización en tu plan: Concierto de Oasis en el Movistar Arena</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dropdown user-box">
+
+                        <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown">
+
+                            <span id="nombreUsuario">Usuario</span>
+                            <img id="fotoPerfil" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+                        </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li><a class="dropdown-item" href="configurar_perfil.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="chat.html">Mensajes</a></li>
+                            <li><a class="dropdown-item" href="calendario.html">Calendario</a></li>
+                            <li><a class="dropdown-item" href="ajustes.html">Ajustes</a></li>
+
+                            <hr>
+
+                            <li><a class="dropdown-item" href="inicio_sesion.html">Cerrar sesión</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!-- CONTENIDO -->
+        <div class="container-fluid crear-plan-container">
+
+            <h1 class="titulo">Crear grupo</h1>
+
+            <div class="form-box">
+
+                <!-- IMAGEN -->
+                <h3>Imagen del grupo</h3>
+
+                <div class="image-section">
+
+                    <div class="preview-wrapper">
+                        <img src="imagenes/Principal_Match_Up.png" class="preview-img">
+                    </div>
+
+                    <div class="upload-area">
+                        <button class="btn btn-primary">Subir imagen</button>
+                        <p>No se ha seleccionado ninguna imagen (opcional).</p>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Asociar plan - Opcional
+                    </label>
+
+                    <select id="selectPlan" class="form-select">
+
+                        <option value="">
+                            Selecciona un plan
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- NOMBRE -->
+                <h3>Nombre del grupo</h3>
+                <input id="titulo" type="text" class="form-control" placeholder="Título del grupo">
+                <p></p>
+                <!-- DESCRIPCIÓN -->
+                <h3>Descripción</h3>
+                <textarea id="descripcion" class="form-control textarea-custom"
+                    placeholder="Ej. Por aqui hablaremos de todo lo relacionado con nuestro plan Búsqueda del Tesoro. Perfecto para poder hablar sobre la astronomía."></textarea>
+
+                <!-- GRID -->
+                <div class="row g-4 mt-2">
+
+                    <div class="col-lg-6">
+                        <h3>Categoría</h3>
+                        <div class="mini-box" id="contenedorCategorias">
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3>Nº máximo de personas</h3>
+                        <div class="mini-box">
+                            <input id="numParticipantes" type="number" class="form-control"
+                                placeholder="Participantes del plan">
+                            <small>Máximo permitido: 30</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3>Tipo de grupo</h3>
+                        <div class="mini-box">
+
+                            <div class="form-check">
+                                <p></p>
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="tipo_grupo" value="LOCAL"
+                                        checked>
+                                    <label class="form-check-label">Local</label>
+                                    <p style="color: #6e6d6d;">Usuarios de tú misma ciudad</p>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="tipo_grupo" value="ONLINE">
+                                    <label class="form-check-label">Online</label>
+                                    <p style="color: #6e6d6d;">Usuarios de otras ciudades</p>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="tipo_grupo" value="MIXTO">
+                                    <label class="form-check-label">Mixto</label>
+                                    <p style="color: #6e6d6d;">Usuarios de cualquier lugar</p>
+                                </div>
+                                <p></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3>Normas del grupo (Opcional)</h3>
+                        <div class="mini-box">
+                            <textarea id="normas" class="form-control textarea-normas"
+                                placeholder="Ej. Respeta a los demás, participa en los planes...."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3>Privacidad</h3>
+                        <div class="mini-box">
+
+                            <div class="form-check">
+                                <p></p>
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="privacidad" value="PUBLICO"
+                                        checked>
+                                    <label class="form-check-label">Público</label>
+                                    <p style="color: #6e6d6d;">Cualquier usuario podrá unirse</p>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="privacidad" value="PRIVADO">
+                                    <label class="form-check-label">Privado</label>
+                                    <p style="color: #6e6d6d;">Solo los usuarios que aceptes</p>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="d-flex gap-3">
+                                    <input class="form-check-input" type="radio" name="privacidad" value="SOLICITUD">
+                                    <label class="form-check-label">Solicitud</label>
+                                    <p style="color: #6e6d6d;">Solo los usuarios con solicitud</p>
+                                </div>
+                                <p></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <h3>Perfil de personas buscadas</h3>
+                        <div class="mini-box">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="perfilBuscado" value="MIXTO" checked>
+
+                                <label class="form-check-label">
+                                    Mixto
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="perfilBuscado"
+                                    value="SIN_PREFERENCIA">
+
+                                <label class="form-check-label">
+                                    Sin preferencia
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="perfilBuscado" value="SOLO_CHICAS">
+
+                                <label class="form-check-label">
+                                    Solo chicas
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="perfilBuscado" value="SOLO_CHICOS">
+
+                                <label class="form-check-label">
+                                    Solo chicos
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- BOTONES -->
+                <div class="action-buttons">
+                    <button onclick="window.location.href='pantalla_principal.html'"
+                        class="btn cancel-btn">Cancelar</button>
+                    <button id="btnCrearGrupo" class="btn create-btn">Crear grupo</button>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+
+            let fotoSeleccionada = null;
+
+            document.addEventListener("DOMContentLoaded", async () => {
+
+                const usuario = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                if (!usuario) return;
+
+                // =========================
+                // CARGAR PLANES
+                // =========================
+
+                try {
+
+                    const response = await fetch(
+                        `http://localhost:8080/planes/creador/${usuario.id}`
+                    );
+
+                    const planes = await response.json();
+
+                    const select =
+                        document.getElementById("selectPlan");
+
+                    planes.forEach(plan => {
+
+                        select.innerHTML += `
+                <option value="${plan.id}">
+                    ${plan.titulo}
+                </option>
+            `;
+                    });
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+
+                // =========================
+                // FOTO
+                // =========================
+
+                const uploadBtn =
+                    document.querySelector(".upload-area .btn");
+
+                const previewImg =
+                    document.querySelector(".preview-img");
+
+                const fileInput =
+                    document.createElement("input");
+
+                fileInput.type = "file";
+
+                fileInput.accept = "image/*";
+
+                fileInput.style.display = "none";
+
+                document.body.appendChild(fileInput);
+
+                uploadBtn.addEventListener("click", function () {
+
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener("change", function () {
+
+                    const file = this.files[0];
+
+                    if (file) {
+
+                        fotoSeleccionada = file;
+
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+
+                            previewImg.src = e.target.result;
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+            });
+
+
+            // =========================
+            // CREAR GRUPO
+            // =========================
+
+            document.getElementById("btnCrearGrupo")
+                .addEventListener("click", async () => {
+
+                    const usuario = JSON.parse(
+                        localStorage.getItem("usuarioLogueado")
+                    );
+
+                    const categoriaId =
+                        document.querySelector(".categoria-btn.active")
+                            ?.dataset.id || "";
+
+                    const grupoData = {
+
+                        nombre:
+                            document.getElementById("titulo").value,
+
+                        descripcion:
+                            document.getElementById("descripcion").value,
+
+                        normas:
+                            document.getElementById("normas").value,
+
+                        num_max_miembros:
+                            parseInt(
+                                document.getElementById("numParticipantes").value
+                            ),
+
+                        privacidad:
+                            document.querySelector(
+                                'input[name="privacidad"]:checked'
+                            ).value,
+
+                        tipoGrupo:
+                            document.querySelector(
+                                'input[name="tipo_grupo"]:checked'
+                            ).value,
+
+                        perfilBuscado:
+                            document.querySelector(
+                                'input[name="perfilBuscado"]:checked'
+                            )?.value || "",
+
+
+                    };
+
+                    const idPlan =
+                        document.getElementById("selectPlan").value;
+
+                    console.log(idPlan);
+                    // VALIDACIÓN
+
+                    if (
+                        !grupoData.nombre ||
+                        !grupoData.descripcion
+                    ) {
+
+                        alert("Completa los campos obligatorios");
+                        return;
+                    }
+
+                    // FORM DATA
+
+                    const formData = new FormData();
+
+                    formData.append(
+                        "grupo",
+                        JSON.stringify(grupoData)
+                    );
+                    formData.append(
+                        "categoriaId",
+                        categoriaId
+                    );
+
+                    if (idPlan) {
+
+                        formData.append(
+                            "idPlan",
+                            idPlan
+                        );
+                    }
+
+
+                    if (fotoSeleccionada) {
+
+                        formData.append(
+                            "foto",
+                            fotoSeleccionada
+                        );
+                    }
+
+
+                    if (grupoData.num_max_miembros > 30) {
+
+                        alert("El máximo permitido es 30");
+
+                        return;
+                    }
+
+                    if (!categoriaId) {
+
+                        alert("Selecciona una categoría");
+
+                        return;
+                    }
+
+                    // FETCH
+
+                    try {
+
+                        const response = await fetch(
+                            `http://localhost:8080/grupos/crear/${usuario.id}`,
+
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        );
+
+                        if (!response.ok) {
+
+                            const error = await response.text();
+
+                            throw new Error(error);
+                        }
+
+                        alert("Grupo creado correctamente");
+
+                        const grupoCreado = await response.json();
+
+                        window.location.href =
+                            `consultar_grupo.html?id=${grupoCreado.id}`;
+                    } catch (error) {
+
+                        console.error(error);
+
+                        alert("Error al crear grupo");
+                    }
+
+                });
+
+        </script>
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const usuarioLogueado = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                if (!usuarioLogueado) {
+                    window.location.href = "inicio_sesion.html";
+                    return;
+                }
+
+                document.getElementById("nombreUsuario").textContent =
+                    usuarioLogueado.nombreUsuario || usuarioLogueado.nombre;
+
+                if (usuarioLogueado.fotoPerfil) {
+                    document.getElementById("fotoPerfil").src =
+                        "http://localhost:8080/fotos_perfil/" +
+                        usuarioLogueado.fotoPerfil;
+                }
+
+            });
+        </script>
+
+
+        <script>
+
+            async function cargarCategorias() {
+
+                try {
+
+                    const response = await fetch(
+                        "http://localhost:8080/categorias"
+                    );
+
+                    const categorias =
+                        await response.json();
+
+                    const contenedor =
+                        document.getElementById(
+                            "contenedorCategorias"
+                        );
+
+                    categorias.forEach(categoria => {
+
+                        contenedor.innerHTML += `
+            
+               <button
+                    type="button"
+                    class="tag-btn categoria-btn"
+                    data-id="${categoria.id_categoria}">
+
+                    ${categoria.nombre}
+
+                </button>
+            `;
+                    });
+
+                    activarBotonesCategorias();
+
+                } catch (error) {
+
+                    console.error(error);
+                }
+            }
+
+            function activarBotonesCategorias() {
+
+                document
+                    .querySelectorAll(".categoria-btn")
+                    .forEach(btn => {
+
+                        btn.addEventListener("click", () => {
+
+                            document
+                                .querySelectorAll(".categoria-btn")
+                                .forEach(b => b.classList.remove("active"));
+
+                            btn.classList.add("active");
+
+                        });
+
+                    });
+            }
+
+            cargarCategorias();
+
+        </script>
+    </div>
+</body>
+
+</html>

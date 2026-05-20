@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Preferencias</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="matchup.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body class="perfil-empez-p page-transition">
+
+    <div class="container-fluid pref-background">
+
+        <div class="container pref-container">
+
+            <!-- HEADER -->
+
+            <div class="pref-header d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <h1 class="titulo">Configura tus preferencias</h1>
+
+                    <p class="subtitulo">Te ayudamos a encontrar los mejores planes para ti</p>
+
+                </div>
+
+                <div class="paso">Paso 2/2</div>
+
+            </div>
+
+
+            <!-- CARD -->
+
+            <div class="pref-card">
+
+                <!-- 1 TIPO PLANES -->
+
+                <div class="section">
+
+                    <h5><span class="number">1</span> Tipo de planes que buscas</h5>
+
+                    <div class="plan-options">
+
+                        <button class="plan-btn">Uno a Uno<br><small>Planes individuales</small></button>
+
+                        <button class="plan-btn">Grupos Pequeños<br><small>3 personas</small></button>
+
+                        <button class="plan-btn">Grupo Mediano<br><small>3-6 personas</small></button>
+
+                        <button class="plan-btn">Grandes<br><small>+6 personas</small></button>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+                <!-- 2 DISTANCIA -->
+
+                <div class="section">
+
+                    <h5><span class="number">2</span> Distancia</h5>
+
+                    <input type="range" class="form-range" min="5" max="505" step="5" value="100">
+
+                    <div class="distance-labels">
+
+                        <span>5 Km</span>
+                        <span>25 Km</span>
+                        <span>50 Km</span>
+                        <span class="selected">100 Km</span>
+                        <span>200 Km</span>
+                        <span>500 Km</span>
+                        <span>Sin límite</span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+                <!-- 3 DISPONIBILIDAD + 4 RITMO -->
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <h5><span class="number">3</span> Disponibilidad</h5>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="disp" checked>
+                            <label class="form-check-label">Entre semana</label>
+                        </div>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="disp">
+                            <label class="form-check-label">Fin de semana</label>
+                        </div>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="disp">
+                            <label class="form-check-label">Ambos</label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <h5><span class="number">4</span> Ritmo</h5>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="ritmo" checked>
+                            <label class="form-check-label">Tranquilo</label>
+                        </div>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="ritmo">
+                            <label class="form-check-label">Normal</label>
+                        </div>
+
+                        <div class="form-check custom-radio-card">
+                            <input class="form-check-input" type="radio" name="ritmo">
+                            <label class="form-check-label">Intenso</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+
+                <div class="row">
+                    <!-- 5 NOTIFICACIONES -->
+                    <div class="col-md-6">
+                        <div class="section">
+
+                            <h5><span class="number">5</span> Notificaciones</h5>
+
+                            <div class="notif-row">
+
+                                <span>Planes activos</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+
+                            </div>
+
+                            <div class="notif-row">
+
+                                <span>Mensajes</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+
+                            </div>
+
+                            <div class="notif-row">
+
+                                <span>Planes cerca de ti</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- BOTON -->
+                    <div class="col-md-6">
+                        <div class="start-container">
+
+                            <button id="btnEmpezar" type="button" class="btn start-btn">Empezar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const planButtons = document.querySelectorAll(".plan-btn");
+
+        planButtons.forEach(button => {
+
+            button.addEventListener("click", function () {
+
+                this.classList.toggle("active");
+
+            });
+
+        });
+
+    </script>
+
+    <script>
+
+        const slider = document.querySelector(".form-range");
+
+        function updateSlider() {
+
+            const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+
+            slider.style.background = `linear-gradient(to right, #00a79d ${value}%, #ddd ${value}%)`;
+
+        }
+
+        updateSlider();
+
+        slider.addEventListener("input", updateSlider);
+
+    </script>
+
+    <script>
+        async function finalizarRegistro() {
+            try {
+
+                // =========================
+                // RECUPERAR DATOS PASO 1
+                // =========================
+
+                const datosGuardados = localStorage.getItem("registroUsuario");
+
+                if (!datosGuardados) {
+                    alert("No se encontraron los datos del paso 1.");
+                    return;
+                }
+
+                const usuario = JSON.parse(datosGuardados);
+
+                // =========================
+                // DATOS PASO 2
+                // =========================
+
+                const tipoPlan = Array.from(
+                    document.querySelectorAll(".plan-btn.active")
+                )
+                    .map(btn => btn.innerText.split("\n")[0])
+                    .join(", ");
+
+
+                if (tipoPlan === null) {
+
+                    alert("Selecciona al menos un tipo de plan");
+
+                    return;
+                }
+
+                let distanciaValor = parseInt(
+                    document.querySelector(".form-range").value
+                );
+
+                let distancia = distanciaValor >= 505
+                    ? 9999
+                    : distanciaValor;
+
+                const disponibilidad = document.querySelector(
+                    'input[name="disp"]:checked'
+                ).nextElementSibling.textContent.trim();
+
+                const ritmo = document.querySelector(
+                    'input[name="ritmo"]:checked'
+                ).nextElementSibling.textContent.trim();
+
+                const switches = document.querySelectorAll(".form-switch input");
+
+                // PLANES ACTIVOS
+                usuario.notifParticipantes = switches[0].checked;
+
+                // MENSAJES
+                usuario.notifMensajes = switches[1].checked;
+
+                // PLANES CERCA
+                usuario.notifPlanesCerca = switches[2].checked;
+
+                // =========================
+                // UNIFICAR TODO
+                // =========================
+
+                usuario.tipoPlan = tipoPlan;
+                usuario.distancia = distancia;
+                usuario.disponibilidad = disponibilidad;
+                usuario.ritmo = ritmo;
+
+                // =========================
+                // FORM DATA
+                // =========================
+
+                const formData = new FormData();
+
+                // usuario JSON
+                formData.append(
+                    "usuario",
+                    JSON.stringify(usuario)
+                );
+
+                // =========================
+                // FOTO BASE64 → FILE
+                // =========================
+
+                const fotoBase64 = localStorage.getItem("fotoPerfil");
+
+                console.log("FOTO BASE64:", fotoBase64);
+
+                if (fotoBase64) {
+
+                    const response = await fetch(fotoBase64);
+                    const blob = await response.blob();
+
+                    const file = new File(
+                        [blob],
+                        "foto_perfil.jpg",
+                        {
+                            type: blob.type || "image/jpeg"
+                        }
+                    );
+
+                    formData.append("foto", file);
+
+                    console.log("FOTO ENVIADA AL BACK");
+                } else {
+                    console.log("NO HAY FOTO GUARDADA");
+                }
+
+                // =========================
+                // ENVIAR AL BACKEND
+                // =========================
+
+                const respuesta = await fetch(
+                    "http://localhost:8080/usuarios/registro-completo",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+                if (respuesta.ok) {
+
+                    const usuarioCreado = await respuesta.json();
+
+                    // guardar usuario logueado REAL
+                    localStorage.setItem(
+                        "usuarioLogueado",
+                        JSON.stringify(usuarioCreado)
+                    );
+
+                    // guardar id
+                    localStorage.setItem(
+                        "idUsuario",
+                        usuarioCreado.id
+                    );
+
+                    // limpiar datos temporales
+                    localStorage.removeItem("registroUsuario");
+                    localStorage.removeItem("fotoPerfil");
+
+                    alert("Registro completado correctamente");
+
+                    const btn = document.getElementById("btnEmpezar");
+
+                    btn.disabled = true;
+                    btn.innerText = "Creando cuenta...";
+
+                    window.location.href = "pantalla_principal.html";
+
+                } else {
+
+                    const error = await respuesta.text();
+
+                    console.error(error);
+
+                    alert("Error: " + error);
+                }
+
+            } catch (error) {
+
+                btn.disabled = false;
+                btn.innerText = "Empezar";
+
+                console.error(error);
+
+                alert("Error de conexión con el servidor");
+            }
+        }
+
+
+    </script>
+    <script>
+
+        document.querySelectorAll(".custom-radio-card").forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                const radio = card.querySelector('input[type="radio"]');
+
+                radio.checked = true;
+            });
+
+        });
+
+    </script>
+
+
+    <script>
+
+        document.getElementById("btnEmpezar").addEventListener("click", function (e) {
+
+            e.preventDefault();
+            finalizarRegistro();
+        });
+
+    </script>
+
+</body>
+
+</html>

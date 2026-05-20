@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Match-Up</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="matchup.css">
+</head>
+
+<body class="inicio-p page-transition">
+
+    <div class="container-fluid vh-100 main-container">
+
+        <div class="row h-100">
+
+            <!-- LOGIN -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+
+                <div class="form-card">
+
+                    <h1 class="logo-title">MATCH-UP</h1>
+
+                    <div class="form-content">
+
+                        <p class="text-center mb-4">Iniciar Sesión</p>
+
+                        <!-- EMAIL O USUARIO -->
+                        <input id="loginInput" type="text" class="form-control mb-4"
+                            placeholder="Introduce el correo electrónico o usuario">
+
+                        <!-- CONTRASEÑA -->
+                        <div class="input-group mb-4 ">
+
+                            <input id="passwordInput" type="password" class="form-control" placeholder="Contraseña">
+
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+
+                                <!-- OJO ABIERTO -->
+                                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                    <path
+                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+
+                                </svg>
+
+                                <!-- OJO CERRADO -->
+                                <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-slash-fill d-none" viewBox="0 0 16 16">
+
+                                    <path
+                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                                    <path
+                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+
+                                </svg>
+
+                            </button>
+
+                        </div>
+
+                        <a href="index.html" class="login-link">
+                            ¿No tienes una cuenta?
+                        </a>
+
+                        <div class="divider">
+                            <span>O continúa con</span>
+                        </div>
+
+                        <div class="social-login">
+
+                            <div class="social-circle">
+                                <img src="imagenes/google.png">
+                            </div>
+
+                            <div class="social-circle">
+                                <img src="imagenes/apple.png">
+                            </div>
+
+                        </div>
+
+                        <!-- BOTÓN REAL -->
+                        <button id="btnLogin" class="btn register-btn w-100 mt-4">
+                            Iniciar sesión
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- LADO DERECHO -->
+            <div class="col-lg-6 right-side text-white">
+
+                <div class="slogan-row">
+                    <h2 class="main-slogan">
+                        Personas reales Planes reales
+                    </h2>
+
+                    <img src="imagenes/logo-removebg-preview.png" class="app-logo">
+                </div>
+
+                <!-- CARRUSEL -->
+                <div id="previewCarousel" class="carousel slide app-preview" data-bs-ride="carousel"
+                    data-bs-interval="3000">
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="imagenes/monitor.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor2.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor3.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor4.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor5.png" class="d-block w-100">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="footer-info d-flex align-items-center gap-2">
+                    <p class="footer-text mb-0">
+                        match-up@gmail.com | +34 660 65 34 21
+                    </p>
+
+                    <img src="imagenes/mapa_blanco_sin_fondo.png" class="footer-icon">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        async function iniciarSesion() {
+
+            const login = document
+                .getElementById("loginInput")
+                .value
+                .trim();
+
+            const contrasenya = document
+                .getElementById("passwordInput")
+                .value
+                .trim();
+
+
+            // VALIDACIÓN FRONT
+
+            if (login === "") {
+                alert("Introduce tu correo o nombre de usuario");
+                return;
+            }
+
+            if (contrasenya === "") {
+                alert("Introduce tu contraseña");
+                return;
+            }
+
+
+            try {
+
+                const respuesta = await fetch(
+                    "http://localhost:8080/usuarios/login",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            login: login,
+                            contrasenya: contrasenya
+                        })
+                    }
+                );
+
+                if (respuesta.ok) {
+
+                    const usuario = await respuesta.json();
+
+                    // guardar usuario completo
+                    localStorage.setItem(
+                        "usuarioLogueado",
+                        JSON.stringify(usuario)
+                    );
+
+                    // guardar id por separado
+                    localStorage.setItem(
+                        "idUsuario",
+                        usuario.id
+                    );
+
+                    alert("Inicio de sesión correcto");
+
+                    window.location.href =
+                        "pantalla_principal.html";
+
+                } else {
+
+                    const error = await respuesta.text();
+
+                    alert(error);
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert("Error de conexión con el servidor");
+            }
+        }
+
+
+        document
+            .getElementById("btnLogin")
+            .addEventListener("click", function (e) {
+
+                e.preventDefault();
+
+                iniciarSesion();
+            });
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <script>
+
+        const passwordInput =
+            document.getElementById("passwordInput");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const eyeOpen =
+            document.getElementById("eyeOpen");
+
+        const eyeClosed =
+            document.getElementById("eyeClosed");
+
+        togglePassword.addEventListener("click", () => {
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+
+                eyeOpen.classList.add("d-none");
+                eyeClosed.classList.remove("d-none");
+
+            } else {
+
+                passwordInput.type = "password";
+
+                eyeOpen.classList.remove("d-none");
+                eyeClosed.classList.add("d-none");
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

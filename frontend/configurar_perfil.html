@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Match-Up</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="barra_navegacion.css">
+    <link rel="stylesheet" href="matchup.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body class="configurar-p page-transition">
+    <div class="main-bg">
+
+        <!-- NAVBAR -->
+
+        <nav class="navbar topbar">
+
+            <div class="container-fluid">
+
+                <div class="logo-area">
+                    <a href="pantalla_principal.html">
+                        <img src="imagenes/logo_blanco.png" class="logo-icon">
+                    </a>
+                    <a href="pantalla_principal.html">
+                        <span class="logo-text">MATCH-UP</span>
+                    </a>
+                </div>
+
+                <div class="nav-right">
+
+                    <a class="nav-link" href="explorar.html">Explorar</a>
+                    <a class="nav-link" href="mis_planes.html">Mis planes</a>
+                    <a class="nav-link" href="chat.html">Mensajes</a>
+
+                    <div class="dropdown bell">
+
+                        <div role="button" data-bs-toggle="dropdown">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-end notif-menu">
+
+                            <div class="notif-header">
+                                <span>Notificaciones</span>
+                                <span>⚙</span>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Importante</small>
+
+                                <p><b>Lucia_12</b> te ha enviado un mensaje</p>
+                                <p><b>Victor_xcx</b> te ha enviado un mensaje</p>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Más notificaciones</small>
+
+                                <p>Novedades al añadir gente nueva a tus grupos</p>
+                                <p>Nuevo plan cerca de ti: Visita al Museo del Prado</p>
+                                <p>Nueva actualización en tu plan: Concierto de Oasis en el Movistar Arena</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dropdown user-box">
+
+                        <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <span id="nombreUsuario">Usuario</span>
+                            <img id="fotoUsuario" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+                        </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li><a class="dropdown-item" href="configurar_perfil.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="chat.html">Mensajes</a></li>
+                            <li><a class="dropdown-item" href="calendario.html">Calendario</a></li>
+                            <li><a class="dropdown-item" href="ajustes.html">Ajustes</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" href="inicio_sesion.html">Cerrar sesión</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+        <div class="container-fluid content-container">
+            <div class="row h-100">
+
+                <div class="col-12 p-3 right-scroll">
+
+                    <!-- PERFIL -->
+                    <div class="custom-box p-3 mb-3">
+                        <div class="d-flex align-items-center gap-3">
+
+                            <img id="perfilFoto" src="imagenes/foto_perfil_por_defecto.jpg" class="rounded-circle"
+                                style="width:120px;height:120px;object-fit:cover;">
+
+                            <div>
+                                <h3 id="perfilNombre">Usuario</h3>
+                                <p class="text-muted" id="perfilCiudad"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16" height="16" fill="#004aad" class="bi bi-geo-alt-fill"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                    </svg> Madrid</p>
+                                <p id="perfilBio">Sin descripción</p>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarPerfil">
+
+                                    Editar perfil
+
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- INTERESES -->
+                    <div class="custom-box p-3 mb-3">
+                        <div class="col-lg-6">
+                            <h3>Intereses</h3>
+                            <div class="mini-box d-flex flex-wrap gap-2" id="contenedorIntereses">
+
+                            </div>
+
+                            <button class="btn btn-primary btn-sm rounded-circle mt-3" data-bs-toggle="modal"
+                                data-bs-target="#modalCategorias" style="width:35px;height:35px;">
+
+                                +
+
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- MIS PLANES -->
+                    <div class="custom-box p-3 mb-3">
+                        <h3>Mis planes</h3>
+
+                        <div id="ultimoPlanContainer"></div>
+
+                        <div class="text-end mt-2">
+                            <button class="btn btn-primary btn-sm" onclick="window.location.href='mis_planes.html'">Ver
+                                todos mis planes</button>
+                        </div>
+                    </div>
+
+
+                    <!-- PREFERENCIAS + ACTIVIDAD -->
+                    <div class="row g-3">
+
+                        <!-- IZQUIERDA -->
+                        <div class="col-lg-7">
+                            <div class="custom-box p-3">
+
+                                <h5>Preferencias sociales</h5>
+                                <hr>
+
+                                <p>Disponibilidad</p>
+                                <div class="d-flex gap-3 mb-3">
+                                    <label><input type="radio" name="Disponibilidad" checked> Entre semana</label>
+                                    <label><input type="radio" name="Disponibilidad"> Fin de semana</label>
+                                    <label><input type="radio" name="Disponibilidad"> Ambos</label>
+                                </div>
+
+                                <hr>
+
+                                <p>Distancia</p>
+                                <input type="range" id="distanciaRange" class="form-range">
+
+                                <hr>
+
+                                <p>Ritmo</p>
+                                <div class="d-flex gap-3 mb-3">
+                                    <label><input type="radio" name="Ritmo" checked> Tranquilo</label>
+                                    <label><input type="radio" name="Ritmo"> Normal</label>
+                                    <label><input type="radio" name="Ritmo"> Intenso</label>
+                                </div>
+
+                                <hr>
+
+                                <p>Tipo de planes</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <button id="plan-uno" class="btn btn-light">Uno a uno</button>
+
+                                    <button id="plan-pequeno" class="btn btn-light">
+                                        Grupo pequeño
+                                    </button>
+
+                                    <button id="plan-mediano" class="btn btn-light">
+                                        Grupo mediano
+                                    </button>
+
+                                    <button id="plan-grande" class="btn btn-light">
+                                        Grandes
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- DERECHA -->
+                        <div class="col-lg-5">
+                            <div class="custom-box p-3">
+
+                                <h5>Mi actividad en Match-Up</h5>
+                                <hr>
+
+                                <div class="stat-box bg-primary-subtle mb-2">
+                                    Planes creados → <b id="planesCreados">0</b>
+                                </div>
+
+                                <div class="stat-box bg-info-subtle mb-2">
+                                    Planes unidos → <b id="planesUnidos">0</b>
+                                </div>
+
+                                <div class="stat-box bg-purple mb-2">
+                                    Personas conocidas → <b id="personasConocidas">0</b>
+                                </div>
+
+                                <div class="stat-box bg-warning-subtle">
+                                    Categoría favorita → <b id="categoriaFavorita">-</b>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn eliminar-btn" id="btnEliminarCuenta"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="white" class="bi bi-trash-fill me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                            </svg>Eliminar perfil</button>
+                        <div class="right-buttons">
+                            <button onclick="window.location.href='pantalla_principal.html'"
+                                class="btn cancelar-btn">Cancelar</button>
+                            <button id="btnGuardar" class="btn guardar-btn">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- MODAL EDITAR PERFIL -->
+    <!-- ================================= -->
+
+    <div class="modal fade" id="modalEditarPerfil" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Editar perfil
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="text-center mb-3">
+
+                        <img id="previewFoto" src="imagenes/foto_perfil_por_defecto.jpg" class="rounded-circle"
+                            style="width:120px;height:120px;object-fit:cover;">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Foto de perfil
+                        </label>
+
+                        <input type="file" id="inputFotoPerfil" class="form-control">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Nombre de usuario
+                        </label>
+
+                        <input type="text" id="inputNombreUsuario" class="form-control">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Nombre
+                        </label>
+
+                        <input type="text" id="inputNombre" class="form-control">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Fecha nacimiento
+                        </label>
+
+                        <input type="date" id="inputFechaNacimiento" class="form-control">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Bio
+                        </label>
+
+                        <textarea id="inputBio" class="form-control" rows="4"></textarea>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Ciudad
+                        </label>
+
+                        <select id="inputCiudad" class="form-select">
+
+                            <option value="">
+                                Selecciona una ciudad
+                            </option>
+
+                        </select>
+
+                    </div>
+                    <p>Asegurese de guardar los cambios al final de la pantalla</p>
+
+
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                        Continuar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- MODAL CATEGORIAS -->
+    <!-- ================================= -->
+
+    <div class="modal fade" id="modalCategorias" tabindex="-1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Tus intereses
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <p class="text-muted small mb-3">
+                        Pincha sobre los intereses que quieras añadir o quitar.
+                    </p>
+
+                    <h6 class="mb-2">
+                        Tus intereses
+                    </h6>
+
+                    <div id="categoriasSeleccionadas" class="d-flex flex-wrap gap-2 mb-4">
+                    </div>
+
+                    <hr>
+
+                    <h6 class="mb-2 mt-4">
+                        Descubre más categorías
+                    </h6>
+
+                    <div id="categoriasDisponibles" class="d-flex flex-wrap gap-2">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", async function () {
+
+            const usuarioLogueado =
+                JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+            if (!usuarioLogueado) {
+                window.location.href = "inicio_sesion.html";
+                return;
+            }
+
+
+            await cargarCiudades();
+
+            // =========================
+            // NAVBAR
+            // =========================
+
+            document.getElementById("nombreUsuario").textContent =
+                usuarioLogueado.nombreUsuario;
+
+            if (usuarioLogueado.fotoPerfil) {
+
+                document.getElementById("fotoUsuario").src =
+                    "http://localhost:8080/fotos_perfil/" +
+                    usuarioLogueado.fotoPerfil;
+            }
+
+            try {
+
+                // =========================
+                // OBTENER USUARIO REAL
+                // =========================
+
+                const response = await fetch(
+                    `http://localhost:8080/usuarios/${usuarioLogueado.id}`
+                );
+
+                const usuario = await response.json();
+                let todasLasCategorias = [];
+
+                console.log(usuario);
+                console.log(usuario.categorias);
+
+                let categoriasSeleccionadas = [];
+
+                let nuevosDatos = {
+
+                    bio: usuario.bio || "",
+                    ciudad: usuario.ciudad?.id_ciudad || "",
+
+                    disponibilidad:
+                        usuario.preferencias?.disponibilidad || "",
+
+                    distancia:
+                        usuario.preferencias?.distancia || 10,
+
+                    ritmo:
+                        usuario.preferencias?.ritmo || "",
+
+                    tipo_plan:
+                        usuario.preferencias?.tipo_plan || "",
+
+
+
+                    nombreUsuario: usuario.nombreUsuario || "",
+
+                    nombre: usuario.nombre || "",
+
+                    fechaNacimiento:
+                        usuario.fechaNacimiento || "",
+
+                    fotoPerfil:
+                        usuario.fotoPerfil || "",
+
+                    categoriasIds: []
+                };
+
+
+                const actividadRes = await fetch(
+                    `http://localhost:8080/usuarios/actividad/${usuario.id}`
+                );
+
+                const actividad = await actividadRes.json();
+
+                document.getElementById("planesCreados").textContent =
+                    actividad.planesCreados;
+
+                document.getElementById("planesUnidos").textContent =
+                    actividad.planesUnidos;
+
+                document.getElementById("personasConocidas").textContent =
+                    actividad.personasConocidas;
+
+                document.getElementById("categoriaFavorita").textContent =
+                    actividad.categoriaFavorita;
+
+                // =========================
+                // EDAD
+                // =========================
+
+                const hoy = new Date();
+
+                const nacimiento = new Date(usuario.fechaNacimiento);
+
+                let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+                const mes = hoy.getMonth() - nacimiento.getMonth();
+
+                if (
+                    mes < 0 ||
+                    (mes === 0 && hoy.getDate() < nacimiento.getDate())
+                ) {
+                    edad--;
+                }
+
+                // =========================
+                // PERFIL
+                // =========================
+
+                document.getElementById("perfilNombre").textContent =
+                    `${usuario.nombre}, ${edad}`;
+
+                document.getElementById("perfilCiudad").innerHTML =
+                    `<svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="#004aad" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                </svg> ${usuario.ciudad.nombre || "Sin ciudad"}`;
+
+                document.getElementById("perfilBio").textContent =
+                    usuario.bio || "Sin descripción";
+
+                document.getElementById("inputBio").value =
+                    usuario.bio || "";
+
+                document.getElementById("inputNombreUsuario")
+                    .value = usuario.nombreUsuario || "";
+
+                document.getElementById("inputNombre")
+                    .value = usuario.nombre || "";
+
+                document.getElementById("inputFechaNacimiento")
+                    .value = usuario.fechaNacimiento || "";
+
+
+                document.getElementById("inputCiudad").value =
+                    usuario.ciudad?.id_ciudad || "";
+
+                if (usuario.fotoPerfil) {
+
+                    document.getElementById("previewFoto").src =
+                        "http://localhost:8080/fotos_perfil/" +
+                        usuario.fotoPerfil;
+                }
+
+                // FOTO
+
+                if (usuario.fotoPerfil) {
+
+                    document.getElementById("perfilFoto").src =
+                        "http://localhost:8080/fotos_perfil/" +
+                        usuario.fotoPerfil;
+                }
+
+                // =========================
+                // INTERESES
+                // =========================
+
+                const contenedor =
+                    document.getElementById("contenedorIntereses");
+
+                contenedor.innerHTML = "";
+
+
+                const categoriasRes = await fetch(
+                    "http://localhost:8080/categorias"
+                );
+
+                todasLasCategorias =
+                    await categoriasRes.json();
+
+
+
+                // =========================
+                // ÚLTIMO PLAN
+                // =========================
+
+                let plan = null;
+
+                try {
+
+                    const planRes = await fetch(
+                        `http://localhost:8080/planes/ultimo/${usuario.id}`
+                    );
+
+                    if (planRes.ok) {
+                        plan = await planRes.json();
+                    }
+
+                } catch (e) {
+
+                    console.log("No hay último plan");
+                }
+
+                if (plan) {
+
+                    const fecha =
+                        new Date(plan.fecha_plan);
+
+                    const fechaTexto =
+                        fecha.toLocaleDateString();
+
+                    document.getElementById(
+                        "ultimoPlanContainer"
+                    ).innerHTML = `
+
+                    <div class="plan-mini mt-2 p-3">
+
+                    <h5 class="mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                    <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                    </svg> ${plan.titulo}
+                    </h5>
+
+                    <p class="mt-2 mb-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="red" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                </svg> ${plan.ubicacion?.ciudad?.nombre || "Sin ubicación"}
+                        · ${fechaTexto}
+                        · ${plan.categoria?.nombre || "Sin categoría"}
+                    </p>
+
+                    <p class="mt-2 mb-0">
+                    👥 Participando
+                    </p>
+
+                    </div>
+                    `;
+                }
+
+                // =========================
+                // PREFERENCIAS
+                // =========================
+
+                if (usuario.preferencias) {
+
+                    const pref = usuario.preferencias;
+                    if (pref.tipo_plan) {
+
+                        const tipos =
+                            pref.tipo_plan.split(",");
+
+                        tipos.forEach(tipo => {
+
+                            tipo = tipo.trim();
+
+                            if (tipo === "Uno a uno") {
+                                document.getElementById("plan-uno")
+                                    .classList.remove("btn-light");
+
+                                document.getElementById("plan-uno")
+                                    .classList.add("btn-primary");
+                            }
+
+                            if (tipo === "Grupo pequeño") {
+                                document.getElementById("plan-pequeno")
+                                    .classList.remove("btn-light");
+
+                                document.getElementById("plan-pequeno")
+                                    .classList.add("btn-primary");
+                            }
+
+                            if (tipo === "Grupo mediano") {
+                                document.getElementById("plan-mediano")
+                                    .classList.remove("btn-light");
+
+                                document.getElementById("plan-mediano")
+                                    .classList.add("btn-primary");
+                            }
+
+                            if (tipo === "Grandes") {
+
+                                document.getElementById("plan-grande")
+                                    .classList.remove("btn-light");
+
+                                document.getElementById("plan-grande")
+                                    .classList.add("btn-primary");
+                            }
+                        });
+                    }
+
+
+
+
+                    document.getElementsByName("Disponibilidad")
+                        .forEach(radio => {
+
+                            radio.addEventListener("change", e => {
+
+                                if (e.target.checked) {
+
+                                    nuevosDatos.disponibilidad =
+                                        e.target.parentElement
+                                            .textContent.trim();
+                                }
+                            });
+                        });
+
+
+
+                    document.getElementsByName("Ritmo")
+                        .forEach(radio => {
+
+                            radio.addEventListener("change", e => {
+
+                                if (e.target.checked) {
+
+                                    nuevosDatos.ritmo =
+                                        e.target.parentElement
+                                            .textContent.trim();
+                                }
+                            });
+                        });
+
+
+                    document.getElementById("distanciaRange")
+                        .addEventListener("input", e => {
+
+                            nuevosDatos.distancia = e.target.value;
+                        });
+                    const botonesPlan = document.querySelectorAll(
+                        "#plan-uno, #plan-pequeno, #plan-mediano, #plan-grande"
+                    );
+
+                    botonesPlan.forEach(btn => {
+
+                        btn.addEventListener("click", () => {
+
+                            btn.classList.toggle("btn-primary");
+                            btn.classList.toggle("btn-light");
+
+                            const seleccionados = [];
+
+                            botonesPlan.forEach(b => {
+
+                                if (b.classList.contains("btn-primary")) {
+
+                                    seleccionados.push(
+                                        b.textContent.trim()
+                                    );
+                                }
+                            });
+
+                            nuevosDatos.tipo_plan =
+                                seleccionados.join(",");
+                        });
+                    });
+
+
+                    // disponibilidad
+
+                    const radiosDisponibilidad =
+                        document.getElementsByName(
+                            "Disponibilidad"
+                        );
+
+                    radiosDisponibilidad.forEach(r => {
+
+                        if (r.parentElement.textContent.trim()
+                            === pref.disponibilidad) {
+
+                            r.checked = true;
+                        }
+                    });
+
+                    // ritmo
+
+                    const radiosRitmo =
+                        document.getElementsByName("Ritmo");
+
+                    radiosRitmo.forEach(r => {
+
+                        if (r.parentElement.textContent.trim()
+                            === pref.ritmo) {
+
+                            r.checked = true;
+                        }
+                    });
+
+                    // distancia
+
+                    document.querySelector(".form-range")
+                        .value = pref.distancia || 10;
+
+
+                    document.getElementById("inputNombreUsuario")
+                        .addEventListener("input", e => {
+
+                            nuevosDatos.nombreUsuario =
+                                e.target.value;
+                        });
+
+                    document.getElementById("inputNombre")
+                        .addEventListener("input", e => {
+
+                            nuevosDatos.nombre =
+                                e.target.value;
+                        });
+
+                    document.getElementById("inputFechaNacimiento")
+                        .addEventListener("change", e => {
+
+                            nuevosDatos.fechaNacimiento =
+                                e.target.value;
+                        });
+                    document.getElementById("inputCiudad")
+                        .addEventListener("change", e => {
+
+                            nuevosDatos.ciudad = e.target.value;
+                        });
+
+                }
+
+
+
+                document.getElementById("btnGuardar")
+                    .addEventListener("click", async () => {
+
+                        try {
+
+                            const formData = new FormData();
+
+                            formData.append(
+                                "nombreUsuario",
+                                nuevosDatos.nombreUsuario
+                            );
+
+                            formData.append(
+                                "nombre",
+                                nuevosDatos.nombre
+                            );
+
+                            formData.append(
+                                "fechaNacimiento",
+                                nuevosDatos.fechaNacimiento
+                            );
+
+                            formData.append(
+                                "bio",
+                                nuevosDatos.bio
+                            );
+
+                            formData.append(
+                                "idCiudad",
+                                nuevosDatos.ciudad
+                            );
+
+                            formData.append(
+                                "disponibilidad",
+                                nuevosDatos.disponibilidad
+                            );
+
+                            formData.append(
+                                "distancia",
+                                nuevosDatos.distancia
+                            );
+
+                            formData.append(
+                                "ritmo",
+                                nuevosDatos.ritmo
+                            );
+
+                            formData.append(
+                                "tipo_plan",
+                                nuevosDatos.tipo_plan
+                            );
+
+                            formData.append(
+                                "categoriasIds",
+                                JSON.stringify(nuevosDatos.categoriasIds)
+                            );
+
+                            // FOTO
+                            const foto =
+                                document.getElementById("inputFotoPerfil")
+                                    .files[0];
+
+                            if (foto) {
+
+                                formData.append("fotoPerfil", foto);
+                            }
+
+                            const response = await fetch(
+                                `http://localhost:8080/usuarios/${usuario.id}/perfil`,
+                                {
+                                    method: "PUT",
+                                    body: formData
+                                }
+                            );
+
+                            if (!response.ok) {
+
+                                throw new Error("Error guardando");
+                            }
+
+                            const usuarioActualizado =
+                                await response.json();
+
+                            // actualizar localStorage
+                            localStorage.setItem(
+                                "usuarioLogueado",
+                                JSON.stringify(usuarioActualizado)
+                            );
+
+                            alert("Perfil actualizado");
+
+                            window.location.reload();
+
+                        } catch (error) {
+
+                            console.error(error);
+
+                            alert("Error guardando perfil");
+                        }
+                    });
+
+
+
+                // =====================================
+                // ELIMINAR CUENTA
+                // =====================================
+
+                document.getElementById("btnEliminarCuenta")
+                    .addEventListener("click", async () => {
+
+                        const confirmar = confirm(
+                            "¿Seguro que quieres eliminar tu cuenta?"
+                        );
+
+                        if (!confirmar) return;
+
+                        try {
+
+                            const response = await fetch(
+                                `http://localhost:8080/usuarios/${usuario.id}`,
+                                {
+                                    method: "DELETE"
+                                }
+                            );
+
+                            if (!response.ok) {
+
+                                throw new Error(
+                                    "Error eliminando usuario"
+                                );
+                            }
+
+                            localStorage.removeItem(
+                                "usuarioLogueado"
+                            );
+
+                            alert(
+                                "Cuenta eliminada correctamente"
+                            );
+
+                            window.location.href =
+                                "inicio_sesion.html";
+
+                        } catch (error) {
+
+                            console.error(error);
+
+                            alert(
+                                "Error eliminando cuenta"
+                            );
+                        }
+                    });
+
+
+                document.getElementById("inputBio")
+                    .addEventListener("input", e => {
+
+                        nuevosDatos.bio = e.target.value;
+                    });
+
+
+                document.getElementById("inputFotoPerfil")
+                    .addEventListener("change", function (e) {
+
+                        const archivo = e.target.files[0];
+
+                        if (!archivo) return;
+
+                        const url = URL.createObjectURL(archivo);
+
+                        document.getElementById("previewFoto").src = url;
+                    });
+
+
+                function renderizarCategorias() {
+
+                    const contenedorSeleccionadas =
+                        document.getElementById("categoriasSeleccionadas");
+
+                    const contenedorDisponibles =
+                        document.getElementById("categoriasDisponibles");
+
+                    const contenedorIntereses =
+                        document.getElementById("contenedorIntereses");
+
+                    contenedorSeleccionadas.innerHTML = "";
+                    contenedorDisponibles.innerHTML = "";
+                    contenedorIntereses.innerHTML = "";
+
+                    // ====================================
+                    // NORMALIZAR IDs
+                    // ====================================
+
+                    categoriasSeleccionadas = categoriasSeleccionadas.map(c => ({
+                        id_categoria: Number(c.id_categoria),
+                        nombre: c.nombre
+                    }));
+
+                    // quitar duplicados reales
+                    categoriasSeleccionadas = categoriasSeleccionadas.filter(
+                        (categoria, index, self) =>
+                            index === self.findIndex(
+                                c => c.id_categoria === categoria.id_categoria
+                            )
+                    );
+
+                    // ====================================
+                    // ARRIBA (SELECCIONADAS)
+                    // ====================================
+
+                    categoriasSeleccionadas.forEach(categoria => {
+
+                        // PERFIL
+                        const tag = document.createElement("button");
+
+                        tag.className = "tag-btn categoria-btn";
+
+                        tag.textContent = categoria.nombre;
+
+                        contenedorIntereses.appendChild(tag);
+
+                        // MODAL
+                        const btn = document.createElement("button");
+
+                        btn.className = "btn btn-primary btn-sm";
+
+                        btn.textContent = categoria.nombre;
+
+                        btn.onclick = () => {
+
+                            // mínimo 2
+                            if (categoriasSeleccionadas.length <= 2) {
+
+                                alert("Debes tener mínimo 2 intereses");
+                                return;
+                            }
+
+                            categoriasSeleccionadas = categoriasSeleccionadas.filter(
+                                c => c.id_categoria !== categoria.id_categoria
+                            );
+
+                            nuevosDatos.categoriasIds =
+                                categoriasSeleccionadas.map(
+                                    c => c.id_categoria
+                                );
+
+                            renderizarCategorias();
+                        };
+
+                        contenedorSeleccionadas.appendChild(btn);
+                    });
+
+                    // ====================================
+                    // ABAJO (DISPONIBLES)
+                    // ====================================
+
+                    todasLasCategorias.forEach(categoria => {
+
+                        const yaSeleccionada = categoriasSeleccionadas.some(
+                            c => c.id_categoria === Number(categoria.id_categoria)
+                        );
+
+                        // si ya está arriba NO mostrar abajo
+                        if (yaSeleccionada) return;
+
+                        const btn = document.createElement("button");
+
+                        btn.className = "btn btn-outline-primary btn-sm";
+
+                        btn.textContent = categoria.nombre;
+
+                        btn.onclick = () => {
+
+                            // máximo 9
+                            if (categoriasSeleccionadas.length >= 9) {
+
+                                alert("Máximo 9 intereses");
+                                return;
+                            }
+
+                            categoriasSeleccionadas.push({
+                                id_categoria: Number(categoria.id_categoria),
+                                nombre: categoria.nombre
+                            });
+
+                            nuevosDatos.categoriasIds =
+                                categoriasSeleccionadas.map(
+                                    c => c.id_categoria
+                                );
+
+                            renderizarCategorias();
+                        };
+
+                        contenedorDisponibles.appendChild(btn);
+                    });
+                }
+
+
+                categoriasSeleccionadas = [];
+
+                if (usuario.categorias && Array.isArray(usuario.categorias)) {
+
+                    categoriasSeleccionadas = usuario.categorias.map(c => {
+
+                        if (c.id_categoria) {
+                            return {
+                                id_categoria: Number(c.id_categoria),
+                                nombre: c.nombre
+                            };
+                        }
+
+                        if (c.categoria) {
+                            return {
+                                id_categoria: Number(c.categoria.id_categoria),
+                                nombre: c.categoria.nombre
+                            };
+                        }
+
+                        return null;
+
+
+                    }).filter(c => c !== null);
+                    nuevosDatos.categoriasIds =
+                        categoriasSeleccionadas.map(
+                            c => c.id_categoria
+                        );
+                }
+
+                renderizarCategorias();
+
+            } catch (error) {
+
+                console.error(error);
+                alert("Error cargando perfil");
+            }
+
+
+
+        });
+
+    </script>
+
+
+    <script>
+
+        async function cargarCiudades() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:8080/ciudades"
+                );
+
+                const ciudades = await response.json();
+
+                const selectCiudad =
+                    document.getElementById("inputCiudad");
+
+                selectCiudad.innerHTML =
+                    `<option value="">Selecciona una ciudad</option>`;
+
+                ciudades.forEach(ciudad => {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value =
+                        ciudad.id_ciudad;
+
+                    option.textContent =
+                        ciudad.nombre;
+
+                    selectCiudad.appendChild(option);
+                });
+
+            } catch (error) {
+
+                console.error(
+                    "Error cargando ciudades",
+                    error
+                );
+            }
+        }
+
+    </script>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Match-Up</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="matchup.css">
+
+</head>
+
+<body class="indice-p page-transition">
+
+    <div class="container-fluid vh-100 main-container">
+
+        <div class="row h-100">
+
+            <!-- LOGIN -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="form-card">
+
+                    <h1 class="logo-title">MATCH-UP</h1>
+
+                    <div class="form-content">
+
+                        <p class="text-center mb-4">Crear una cuenta</p>
+
+                        <input type="email" id="email" class="form-control mb-4"
+                            placeholder="Introduce el correo electrónico">
+                        <input type="text" id="nombre" class="form-control mb-4" placeholder="Nombre de usuario">
+                        <div class="input-group mb-4 ">
+
+                            <input type="password" id="password" class="form-control" placeholder="Contraseña">
+
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+
+                                <!-- OJO ABIERTO -->
+                                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                    <path
+                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+
+                                </svg>
+
+                                <!-- OJO CERRADO -->
+                                <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-slash-fill d-none" viewBox="0 0 16 16">
+
+                                    <path
+                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                                    <path
+                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+
+                                </svg>
+
+                            </button>
+
+                        </div>
+
+                        <a href="inicio_sesion.html" class="login-link">¿Ya tienes una cuenta?</a>
+
+                        <div class="divider">
+                            <span>O continúa con</span>
+                        </div>
+
+                        <div class="social-login">
+
+                            <div class="social-circle" data-bs-toggle="modal" data-bs-target="#googleLoginModal">
+                                <img src="imagenes/google.png">
+                            </div>
+
+                            <div class="social-circle" data-bs-toggle="modal" data-bs-target="#appleModal">
+                                <img src="imagenes/apple.png">
+                            </div>
+
+                        </div>
+
+                        <button class="btn register-btn w-100 mt-4" onclick="registrarUsuario()">
+                            Registrarse
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- LADO DERECHO -->
+            <div class="col-lg-6 right-side text-white">
+
+                <div class="slogan-row">
+                    <h2 class="main-slogan">Personas reales Planes
+                        reales</h2>
+                    <img src="imagenes/logo-removebg-preview.png" class="app-logo">
+                </div>
+
+                <!-- MONITOR CON CARRUSEL -->
+                <div id="previewCarousel" class="carousel slide app-preview" data-bs-ride="carousel"
+                    data-bs-interval="3000">
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="imagenes/monitor.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor2.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor3.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor4.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="imagenes/monitor5.png" class="d-block w-100">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="footer-info d-flex align-items-center gap-2">
+                    <p class="footer-text mb-0">match-up@gmail.com | +34 660 65 34 21</p>
+                    <img src="imagenes/mapa_blanco_sin_fondo.png" class="footer-icon">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+</body>
+
+
+<div class="modal fade" id="googleLoginModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content google-modal">
+
+            <!-- BARRA SUPERIOR -->
+            <div class="google-header">
+                <img src="imagenes/google.png" class="google-icon">
+                <span>Inicia sesión con google</span>
+            </div>
+
+            <!-- CUERPO -->
+            <div class="google-body">
+
+                <!-- IZQUIERDA -->
+                <div class="google-left">
+                    <img src="imagenes/logo-removebg-preview.png" class="handshake-icon">
+
+                    <h2>Inicia Sesión</h2>
+
+                    <p>Ir a <span class="brand">Match-Up</span></p>
+                </div>
+
+                <!-- DERECHA -->
+                <div class="google-right">
+
+                    <!-- PASO 1 -->
+                    <div id="googleStep1">
+
+                        <input type="email" class="google-input" placeholder="Correo electrónico o teléfono">
+
+                        <a class="google-link">¿Has olvidado tu correo electrónico?</a>
+
+                        <p class="google-terms">
+                            Antes de usar esta aplicación, puedes leer la
+                            <span>política de privacidad</span> y los
+                            <span>términos del servicio</span> de Match-Up.
+                        </p>
+
+                        <div class="google-buttons">
+                            <button class="btn-create">Crear cuenta</button>
+                            <button class="btn-next" onclick="nextStep()">Siguiente</button>
+                        </div>
+
+                    </div>
+
+                    <!-- PASO 2 -->
+                    <div id="googleStep2" style="display:none">
+
+                        <input type="password" class="google-input" placeholder="Introduce tu contraseña">
+
+                        <div class="google-buttons">
+                            <button class="btn-create">Atrás</button>
+                            <a href="perfil_empezar.html" class="btn-next">
+                                Iniciar sesión
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- APPLE LOGIN MODAL -->
+<div class="modal fade" id="appleModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content apple-login-modal">
+
+            <div class="modal-body p-4">
+
+                <!-- CABECERA -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="imagenes/apple.png" width="28">
+                        <span class="fw-semibold">Cuenta de Apple</span>
+                    </div>
+
+                    <span class="text-muted">Iniciar sesión</span>
+                </div>
+
+                <!-- ICONO -->
+                <div class="text-center mb-4">
+                    <img src="imagenes/logo-removebg-preview.png" style="width:90px">
+                </div>
+
+                <p class="text-center mb-4">
+                    Usa tu cuenta de Apple para iniciar sesión en Match-Up.
+                </p>
+
+                <!-- PASO 1 -->
+                <div id="appleStep1">
+
+                    <input type="text" class="apple-login-modal mb-4" placeholder="Correo o número de teléfono">
+
+                    <div class="text-center">
+                        <button class="btn btn-primary px-5" onclick="appleNext()">
+                            Continuar
+                        </button>
+                    </div>
+
+                    <p class="text-muted small text-center mt-4">
+                        Al configurar Iniciar sesión con Apple, la información sobre tus
+                        interacciones con Apple y este dispositivo puede ser utilizada
+                        por Apple para ayudar a evitar fraudes.
+                    </p>
+
+                </div>
+
+                <!-- PASO 2 -->
+                <div id="appleStep2" style="display:none">
+
+                    <input type="password" class="apple-login-modal mb-4" placeholder="Contraseña de Apple">
+
+                    <div class="d-flex justify-content-between">
+
+                        <button class="btn btn-outline-secondary" onclick="appleBack()">
+                            Atrás
+                        </button>
+
+                        <a href="perfil_empezar.html" class="btn btn-primary">
+                            Iniciar sesión
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function nextStep() {
+        document.getElementById("googleStep1").style.display = "none";
+        document.getElementById("googleStep2").style.display = "block";
+    }
+
+</script>
+<script>
+
+    function appleNext() {
+        document.getElementById("appleStep1").style.display = "none";
+        document.getElementById("appleStep2").style.display = "block";
+    }
+
+    function appleBack() {
+        document.getElementById("appleStep1").style.display = "block";
+        document.getElementById("appleStep2").style.display = "none";
+    }
+
+</script>
+
+<script>
+
+    async function registrarUsuario() {
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+        const nombreUsuario =
+            document.getElementById("nombre")
+                .value
+                .trim();
+
+        const contrasenya =
+            document.getElementById("password")
+                .value
+                .trim();
+
+        // =========================
+        // VALIDAR CAMPOS VACÍOS
+        // =========================
+
+        if (email === "") {
+
+            alert("Introduce un correo electrónico");
+            return;
+        }
+
+        if (nombreUsuario === "") {
+
+            alert("Introduce un nombre de usuario");
+            return;
+        }
+
+        if (contrasenya === "") {
+
+            alert("Introduce una contraseña");
+            return;
+        }
+
+        try {
+
+            // =========================
+            // COMPROBAR SI EL EMAIL EXISTE
+            // =========================
+
+            const respuesta = await fetch(
+                `http://localhost:8080/usuarios/email/${email}`
+            );
+
+            // si devuelve true -> ya existe
+
+            const existe = await respuesta.json();
+
+            if (existe) {
+
+                alert("Ya existe una cuenta con este correo");
+                return;
+            }
+
+            // =========================
+            // GUARDAR USUARIO TEMPORAL
+            // =========================
+
+            const usuario = {
+
+                email: email,
+                nombreUsuario: nombreUsuario,
+                contrasenya: contrasenya
+            };
+
+            localStorage.setItem(
+                "registroUsuario",
+                JSON.stringify(usuario)
+            );
+
+            // =========================
+            // IR A SIGUIENTE PANTALLA
+            // =========================
+
+            window.location.href =
+                "perfil_empezar.html";
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Error conectando con el servidor");
+        }
+    }
+
+</script>
+
+<script>
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const toggleButton =
+        document.getElementById("togglePassword");
+
+    const eyeOpen =
+        document.getElementById("eyeOpen");
+
+    const eyeClosed =
+        document.getElementById("eyeClosed");
+
+    toggleButton.addEventListener("click", () => {
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+
+            eyeOpen.classList.add("d-none");
+            eyeClosed.classList.remove("d-none");
+
+        } else {
+
+            passwordInput.type = "password";
+
+            eyeOpen.classList.remove("d-none");
+            eyeClosed.classList.add("d-none");
+        }
+
+    });
+
+</script>
+
+</html>
+
+<!--
+
+-->

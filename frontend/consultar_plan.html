@@ -1,0 +1,1246 @@
+<!-- consultar_plan.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar plan</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="barra_navegacion.css">
+    <link rel="stylesheet" href="matchup.css">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="cons-plan-p page-transition">
+    <div class="main-bg">
+        <!-- NAVBAR -->
+        <nav class="navbar topbar">
+
+            <div class="container-fluid">
+
+                <div class="logo-area">
+                    <a href="pantalla_principal.html">
+                        <img src="imagenes/logo_blanco.png" class="logo-icon">
+                    </a>
+                    <a href="pantalla_principal.html">
+                        <span class="logo-text">MATCH-UP</span>
+                    </a>
+                </div>
+
+                <div class="nav-right">
+
+                    <a class="nav-link" href="explorar.html">Explorar</a>
+                    <a class="nav-link" href="mis_planes.html">Mis planes</a>
+                    <a class="nav-link" href="chat.html">Mensajes</a>
+
+                    <div class="dropdown bell">
+
+                        <div role="button" data-bs-toggle="dropdown">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-end notif-menu">
+
+                            <div class="notif-header">
+                                <span>Notificaciones</span>
+                                <span>⚙</span>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Importante</small>
+
+                                <p><b>Lucia_12</b> te ha enviado un mensaje</p>
+                                <p><b>Victor_xcx</b> te ha enviado un mensaje</p>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Más notificaciones</small>
+
+                                <p>Novedades al añadir gente nueva a tus grupos</p>
+                                <p>Nuevo plan cerca de ti: Visita al Museo del Prado</p>
+                                <p>Nueva actualización en tu plan: Concierto de Oasis en el Movistar Arena</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dropdown user-box">
+
+                        <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown">
+
+                            <span id="nombreUsuario">Usuario</span>
+                            <img id="fotoPerfil" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+                        </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li><a class="dropdown-item" href="configurar_perfil.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="chat.html">Mensajes</a></li>
+                            <li><a class="dropdown-item" href="calendario.html">Calendario</a></li>
+                            <li><a class="dropdown-item" href="ajustes.html">Ajustes</a></li>
+
+                            <hr>
+
+                            <li><a class="dropdown-item" href="inicio_sesion.html">Cerrar sesión</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <!-- CONTENIDO -->
+        <div class="container-fluid consultar-container">
+
+            <!-- HERO -->
+            <div class="hero-section">
+
+                <img src="imagenes/Principal_Match_Up.png" class="hero-img">
+
+                <div class="hero-overlay">
+
+                    <h1>Escapada a Montserrat</h1>
+
+                    <div class="hero-info">
+
+                        <span>📍 Barcelona</span>
+                        <span>📅 Viernes, 4 de abril</span>
+                        <span>🕒 10:00</span>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ORGANIZADOR -->
+            <div class="content-box organizer-box">
+
+                <div class="organizer-left">
+
+                    <img src="imagenes/foto_perfil_por_defecto.jpg" class="organizer-img" id="organizadorFoto">
+
+                    <div class="organizer-text">
+                        <p class="organizer-label">Organizado por:</p>
+                        <h4 id="organizadorNombre">Usuario</h4>
+                        <p class="organizer-city" id="organizadorCiudad">Ciudad</p>
+                    </div>
+
+                </div>
+
+                <button id="btnVerPerfil" class="btn profile-btn">
+                    Ver perfil →
+                </button>
+
+            </div>
+
+
+            <!-- DESCRIPCIÓN -->
+            <div class="content-box">
+
+                <h3>Descripción del plan</h3>
+
+                <p id="descripcionPlan">
+                    Vamos a hacer una ruta...
+                </p>
+
+            </div>
+
+
+            <!-- INFO PLAN -->
+            <div class="content-box">
+
+                <h3>Información del plan</h3>
+
+                <div class="info-grid">
+
+                    <div class="info-item" id="infoUbicacion"></div>
+                    <div class="info-item" id="infoPlazas"></div>
+                    <div class="info-item" id="infoParticipantes"></div>
+                    <div class="info-item" id="infoGenero"></div>
+                    <div class="info-item" id="infoCategoria"></div>
+                    <div class="info-item" id="infoDuracion"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAS -->
+            <div class="content-box">
+
+                <h3>Personas que van</h3>
+
+                <div class="people-list">
+                    <div class="people-list" id="listaPersonas"></div>
+                </div>
+
+            </div>
+
+
+            <!-- BOTONES -->
+            <div class="action-buttons">
+
+                <button onclick="window.location.href='pantalla_principal.html'" class="btn cancel-btn"
+                    id="btnCancelar">
+                    Cancelar
+                </button>
+
+                <button class="btn join-btn" id="btnUnirse">
+                    Unirse al plan
+                </button>
+
+                <button class="btn profile-btn" id="btnVerGrupo" style="display: none;">
+
+                    Ver grupo
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const usuarioLogueado = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                if (!usuarioLogueado) {
+                    window.location.href = "inicio_sesion.html";
+                    return;
+                }
+
+                document.getElementById("nombreUsuario").textContent =
+                    usuarioLogueado.nombreUsuario || usuarioLogueado.nombre;
+
+                if (usuarioLogueado.fotoPerfil) {
+                    document.getElementById("fotoPerfil").src =
+                        "http://localhost:8080/fotos_perfil/" +
+                        usuarioLogueado.fotoPerfil;
+                }
+
+            });
+        </script>
+
+        <script>
+
+            let planActual = null;
+
+        </script>
+
+
+        <script>
+
+            async function rellenarModal(plan) {
+
+                // TEXTOS
+                document.getElementById("editTitulo").value =
+                    plan.titulo || "";
+
+                document.getElementById("editDescripcion").value =
+                    plan.descripcion || "";
+
+                // =========================
+                // PAIS
+                // =========================
+                document.getElementById("editPais").value =
+                    String(plan.ubicacion?.pais?.id || "");
+
+                // =========================
+                // CIUDADES
+                // =========================
+                await cargarCiudades(plan.ubicacion?.pais?.id);
+
+                console.log(plan.ubicacion);
+                document.getElementById("editCiudad").value =
+                    String(plan.ubicacion?.ciudad?.id_ciudad || "");
+
+                // =========================
+                // CATEGORIAS
+                // =========================
+                await cargarCategorias();
+
+                document.getElementById("editCategoria").value =
+                    String(plan.categoria?.id_categoria || "");
+
+                // =========================
+                // DIRECCION
+                // =========================
+                document.getElementById("editDireccion").value =
+                    plan.ubicacion?.direccion || "";
+
+                // DURACION
+                document.getElementById("editDuracion").value =
+                    plan.duracion || "";
+
+                // PARTICIPANTES
+                document.getElementById("editParticipantes").value =
+                    plan.num_max_participantes || "";
+
+                // FECHA
+                const fechaPlan = new Date(plan.fecha_plan);
+
+                document.getElementById("editFecha").value =
+                    fechaPlan.toISOString().split("T")[0];
+
+                document.getElementById("editHora").value =
+                    fechaPlan.toTimeString().slice(0, 5);
+
+                // IMAGEN
+                const preview =
+                    document.getElementById("previewImagenPlan");
+
+                const nombreImagen =
+                    document.getElementById("nombreImagenActual");
+
+                if (plan.imagen) {
+
+                    preview.src =
+                        "http://localhost:8080/fotos_plan/" + plan.imagen;
+
+                    nombreImagen.textContent =
+                        plan.imagen;
+
+                } else {
+
+                    preview.src =
+                        "imagenes/logo_blanco.png";
+
+                    nombreImagen.textContent =
+                        "Sin imagen";
+                }
+
+                document.getElementById("editImagen").value = "";
+            }
+
+        </script>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async function () {
+
+                const params = new URLSearchParams(window.location.search);
+                const idPlan = params.get("id");
+
+                if (!idPlan || idPlan === "undefined") {
+                    alert("Plan no válido");
+                    window.location.href = "mis_planes.html";
+                    return;
+                }
+
+                try {
+
+                    const response = await fetch(
+                        `http://localhost:8080/planes/${idPlan}`
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("No se pudo cargar el plan");
+                    }
+
+                    const plan = await response.json();
+
+                    // =========================
+                    // CARGAR GRUPO DEL PLAN
+                    // =========================
+
+                    try {
+
+                        const resGrupo = await fetch(
+                            `http://localhost:8080/grupos/plan/${idPlan}`
+                        );
+
+                        if (resGrupo.ok) {
+
+                            const grupo = await resGrupo.json();
+
+                            const btnGrupo =
+                                document.getElementById("btnVerGrupo");
+
+                            btnGrupo.style.display = "inline-block";
+
+                            btnGrupo.onclick = function () {
+
+                                window.location.href =
+                                    `consultar_grupo.html?id=${grupo.id}`;
+                            };
+                        }
+
+                    } catch (error) {
+
+                        console.error(
+                            "Error cargando grupo",
+                            error
+                        );
+                    }
+
+                    planActual = plan;
+
+                    // =========================
+                    // RELLENAR MODAL EDITAR
+                    // =========================
+
+                    rellenarModal(plan);
+
+
+                    // HERO
+                    document.querySelector(".hero-overlay h1").textContent = plan.titulo;
+
+                    document.querySelector(".hero-img").src =
+                        plan.imagen
+                            ? "http://localhost:8080/fotos_plan/" + plan.imagen
+                            : "imagenes/Principal_Match_Up.png";
+
+                    // DESCRIPCIÓN (YA BIEN)
+                    document.getElementById("descripcionPlan").textContent =
+                        plan.descripcion;
+
+                    // =========================
+                    // ORGANIZADOR
+                    // =========================
+                    if (plan.creador) {
+
+                        document.getElementById("organizadorNombre").textContent =
+                            plan.creador.nombre;
+
+                        document.getElementById("organizadorCiudad").textContent =
+                            plan.creador.ciudad.nombre;
+
+                        document.getElementById("organizadorFoto").src =
+                            plan.creador.fotoPerfil
+                                ? "http://localhost:8080/fotos_perfil/" + plan.creador.fotoPerfil
+                                : "imagenes/foto_perfil_por_defecto.jpg";
+
+                        document.getElementById("btnVerPerfil")
+                            .onclick = function () {
+
+                                window.location.href =
+                                    `ver_perfil.html?id=${plan.creador.id}`;
+                            };
+                    }
+
+                    // =========================
+                    // FECHA Y HORA
+                    // =========================
+                    const fecha = new Date(plan.fecha_plan);
+
+                    const fechaFormateada = fecha.toLocaleDateString();
+                    const horaFormateada = fecha.toLocaleTimeString([], {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    const ubicacionTexto = [
+                        plan.ubicacion?.direccion,
+                        plan.ubicacion?.ciudad?.nombre,
+                        plan.ubicacion?.pais?.nombre
+                    ]
+                        .filter(Boolean)
+                        .join(", ");
+
+                    document.querySelector(".hero-info").innerHTML = `
+                   <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg> ${ubicacionTexto}</span>
+                   <span>📅 ${fechaFormateada}</span>
+                   <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" class="bi bi-clock-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+</svg> ${horaFormateada}</span>
+                `;
+
+                    // =========================
+                    // INFO PLAN
+                    // =========================
+                    document.getElementById("infoUbicacion").innerHTML = `
+    
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="red"
+                        class="bi bi-geo-alt-fill"
+                        viewBox="0 0 16 16">
+
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+
+                    </svg>
+
+                    ${[
+                            plan.ubicacion?.ciudad?.nombre,
+                            plan.ubicacion?.pais?.nombre,
+                            plan.ubicacion?.direccion
+                        ]
+                            .filter(Boolean)
+                            .join(", ")
+                        }`;
+
+                    document.getElementById("infoPlazas").textContent =
+                        "👥 Máx: " + plan.num_max_participantes;
+
+                    document.getElementById("infoParticipantes").textContent =
+                        "👥 Participantes: (pendiente backend)";
+
+                    document.getElementById("infoGenero").textContent =
+                        "⚧ " + (plan.perfilBuscado || "Mixto");
+
+                    document.getElementById("infoCategoria").textContent =
+                        "🏷 " + (plan.categoria.nombre || "General");
+
+                    document.getElementById("infoDuracion").textContent =
+                        "⏳ " + (plan.duracion || "No especificado");
+
+                    // =========================
+                    // PERSONAS (mínimo creador)
+                    // =========================
+                    // =========================
+                    // PERSONAS REALES
+                    // =========================
+                    const lista = document.getElementById("listaPersonas");
+                    lista.innerHTML = "";
+
+                    try {
+
+                        const res = await fetch(
+                            `http://localhost:8080/usuario-plan/plan/${idPlan}`
+                        );
+
+                        const participantes = await res.json();
+
+                        let contador = 0;
+
+                        participantes.forEach(up => {
+
+                            if (up.estado !== "ACTIVO") return;
+
+                            const usuario = up.usuario;
+
+                            const img = document.createElement("img");
+
+                            img.src = usuario.fotoPerfil
+                                ? "http://localhost:8080/fotos_perfil/" + usuario.fotoPerfil
+                                : "imagenes/foto_perfil_por_defecto.png";
+
+                            lista.appendChild(img);
+                            contador++;
+                        });
+
+                        // actualizar contador
+                        document.getElementById("infoParticipantes").textContent =
+                            `👥 ${contador}/${plan.num_max_participantes}`;
+
+                    } catch (error) {
+                        console.error("Error cargando participantes", error);
+                    }
+
+
+                } catch (error) {
+                    console.error(error);
+                    alert("Error al cargar el plan");
+                }
+
+            });
+        </script>
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async function () {
+                const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+                const params = new URLSearchParams(window.location.search);
+                const idPlan = params.get("id");
+                const btn = document.getElementById("btnUnirse");
+
+                if (!usuarioLogueado || !usuarioLogueado.id || !idPlan) return;
+
+                try {
+                    // 1. Obtenemos los datos del plan y de los participantes en una sola carga
+                    const [resPlan, resPart] = await Promise.all([
+                        fetch(`http://localhost:8080/planes/${idPlan}`),
+                        fetch(`http://localhost:8080/usuario-plan/plan/${idPlan}`)
+                    ]);
+
+                    const plan = await resPlan.json();
+                    const participantes = await resPart.json();
+
+
+                    // ==========================
+                    // OCULTAR BOTONES < 24 HORAS
+                    // ==========================
+
+                    const fechaPlan = new Date(plan.fecha_plan);
+
+                    const ahora = new Date();
+
+                    const diferenciaMs = fechaPlan - ahora;
+
+                    const horasRestantes = diferenciaMs / (1000 * 60 * 60);
+
+                    if (horasRestantes < 24) {
+
+                        document.querySelector(".action-buttons").style.display = "none";
+
+                        return;
+                    }
+
+                    // 2. Calculamos ocupación real (solo usuarios activos)
+                    const participantesActivos = participantes.filter(up => up.estado === "ACTIVO");
+                    const totalActivos = participantesActivos.length;
+                    const maxPlazas = plan.num_max_participantes;
+
+                    // 3. Identificamos el rol del usuario actual
+                    let esParticipante = false;
+                    let esCreador = false;
+
+                    participantes.forEach(up => {
+                        if (up.usuario.id === usuarioLogueado.id) {
+                            if (up.rol === "CREADOR") esCreador = true;
+                            else if (up.estado === "ACTIVO") esParticipante = true;
+                        }
+                    });
+
+                    // ==========================================
+                    // CONFIGURACIÓN DE BOTONES SEGÚN EL ROL
+                    // ==========================================
+
+                    if (esCreador) {
+                        // CASO CREADOR: Puede eliminar o editar
+                        const btnCancelar = document.getElementById("btnCancelar");
+                        if (btnCancelar) btnCancelar.style.display = "none";
+
+                        btn.textContent = "Eliminar plan";
+                        btn.classList.remove("join-btn");
+                        btn.classList.add("cancel-btn");
+
+                        btn.onclick = async () => {
+
+                            if (!confirm("¿Seguro que quieres eliminar el plan?")) return;
+
+                            try {
+
+                                const res = await fetch(
+                                    `http://localhost:8080/planes/${idPlan}`,
+                                    {
+                                        method: "DELETE"
+                                    }
+                                );
+
+                                console.log("STATUS:", res.status);
+
+                                const texto = await res.text();
+
+                                console.log("RESPUESTA:", texto);
+
+                                if (res.ok) {
+
+                                    alert("Plan eliminado correctamente 🗑");
+
+                                    window.location.href = "mis_planes.html";
+
+                                } else {
+
+                                    alert("Error backend: " + texto);
+                                }
+
+                            } catch (error) {
+
+                                console.error(error);
+
+                                alert("Error eliminando plan");
+                            }
+                        };
+
+                        // Crear botón de editar si no existe ya
+                        if (!document.getElementById("btnEditarExtra")) {
+                            const editBtn = document.createElement("button");
+                            editBtn.id = "btnEditarExtra";
+                            editBtn.textContent = "Editar plan";
+                            editBtn.classList.add("btn", "profile-btn");
+                            editBtn.setAttribute("data-bs-toggle", "modal");
+                            editBtn.setAttribute("data-bs-target", "#editarPlanModal");
+                            document.querySelector(".action-buttons").appendChild(editBtn);
+                        }
+
+                    } else if (esParticipante) {
+                        // CASO PARTICIPANTE: Puede salir del plan
+                        btn.textContent = "Salir del plan";
+                        btn.classList.remove("join-btn");
+                        btn.classList.add("cancel-btn");
+
+                        btn.onclick = async () => {
+                            const res = await fetch(`http://localhost:8080/usuario-plan/salir/${usuarioLogueado.id}/${idPlan}`, { method: "DELETE" });
+                            if (res.ok) {
+                                alert("Has salido del plan");
+                                window.location.reload();
+                            }
+                        };
+
+                    } else {
+                        // CASO USUARIO NO APUNTADO: Puede unirse
+                        btn.textContent = "Unirse al plan";
+
+                        btn.onclick = async () => {
+                            // VALIDACIÓN DE PLAZAS LLENAS
+                            if (totalActivos >= maxPlazas) {
+                                alert("¡Vaya! Parece que el plan se ha llenado mientras lo mirabas.");
+                                return;
+                            }
+
+                            const res = await fetch(`http://localhost:8080/usuario-plan/unirse/${usuarioLogueado.id}/${idPlan}`, { method: "POST" });
+
+                            if (res.ok) {
+                                alert("¡Genial! Te has unido al plan 🎉");
+                                window.location.reload();
+                            } else {
+                                const msg = await res.text();
+                                alert(msg || "No se ha podido procesar tu solicitud.");
+                            }
+                        };
+                    }
+
+                } catch (error) {
+                    console.error("Error cargando la gestión de botones:", error);
+                }
+            });
+        </script>
+
+
+
+
+        <!-- MODAL EDITAR PLAN -->
+        <div class="modal fade" id="editarPlanModal" tabindex="-1">
+
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+
+                <div class="modal-content editar-modal">
+
+                    <!-- HEADER -->
+                    <div class="editar-header">
+
+                        <h2>Editar plan</h2>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body editar-body">
+
+                        <!-- IMAGEN -->
+
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Imagen del plan
+                            </label>
+
+                            <!-- PREVIEW -->
+                            <img id="previewImagenPlan" class="preview-plan-img" src="imagenes/logo_blanco.png">
+
+                            <!-- NOMBRE -->
+                            <p id="nombreImagenActual" class="nombre-imagen-plan">
+                                Sin imagen
+                            </p>
+
+                            <!-- INPUT -->
+                            <input type="file" id="editImagen" class="form-control editar-input" accept="image/*">
+
+                        </div>
+
+
+
+                        <!-- TITULO -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Título
+                            </label>
+
+                            <input type="text" id="editTitulo" class="form-control editar-input">
+
+                        </div>
+
+                        <!-- DESCRIPCIÓN -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Descripción
+                            </label>
+
+                            <textarea id="editDescripcion" class="form-control editar-input textarea-edit">
+                    </textarea>
+
+                        </div>
+
+                        <!-- FECHA -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Fecha
+                            </label>
+
+                            <input type="date" id="editFecha" class="form-control editar-input">
+
+                        </div>
+
+                        <!-- HORA -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Hora
+                            </label>
+
+                            <input type="time" id="editHora" class="form-control editar-input">
+
+                        </div>
+
+                        <!-- UBICACION -->
+                        <!-- PAIS -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                País
+                            </label>
+
+                            <select id="editPais" class="form-select editar-input">
+
+                                <option value="">
+                                    Selecciona un país
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- CIUDAD -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Ciudad
+                            </label>
+
+                            <select id="editCiudad" class="form-select editar-input">
+
+                                <option value="">
+                                    Selecciona una ciudad
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- DIRECCION -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Dirección (opcional)
+                            </label>
+
+                            <input type="text" id="editDireccion" class="form-control editar-input"
+                                placeholder="Calle, número, referencia...">
+
+                        </div>
+
+                        <!-- DURACION -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Duración
+                            </label>
+
+                            <input type="text" id="editDuracion" class="form-control editar-input"
+                                placeholder="Ej: 2 horas">
+
+                        </div>
+
+                        <!-- PARTICIPANTES -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Máximo participantes
+                            </label>
+
+                            <input type="number" id="editParticipantes" class="form-control editar-input">
+
+                        </div>
+
+                        <!-- CATEGORIA -->
+                        <div class="mb-4">
+
+                            <label class="editar-label">
+                                Categoría
+                            </label>
+
+                            <select id="editCategoria" class="form-select editar-input">
+
+                                <option value="">
+                                    Selecciona una categoría
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="editar-footer">
+
+                        <button class="btn cancel-btn" data-bs-dismiss="modal">
+
+                            Cancelar
+
+                        </button>
+
+                        <button class="btn join-btn" id="guardarCambiosBtn">
+
+                            Guardar cambios
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <script>
+
+            document
+                .getElementById("editImagen")
+                .addEventListener("change", function (event) {
+
+                    const archivo = event.target.files[0];
+
+                    if (!archivo) return;
+
+                    // preview visual
+                    const url = URL.createObjectURL(archivo);
+
+                    document.getElementById(
+                        "previewImagenPlan"
+                    ).src = url;
+
+                    // nombre archivo
+                    document.getElementById(
+                        "nombreImagenActual"
+                    ).textContent = archivo.name;
+                });
+
+        </script>
+
+        <script>
+
+            const modalEditar =
+                document.getElementById("editarPlanModal");
+
+            modalEditar.addEventListener("hidden.bs.modal", function () {
+
+                if (planActual) {
+
+                    rellenarModal(planActual);
+                }
+
+            });
+
+        </script>
+
+        <script>
+
+            document
+                .getElementById("guardarCambiosBtn")
+                .addEventListener("click", async function () {
+
+                    try {
+
+                        const params = new URLSearchParams(window.location.search);
+
+                        const idPlan = params.get("id");
+
+                        // =========================
+                        // CAPTURAR DATOS
+                        // =========================
+
+                        const titulo =
+                            document.getElementById("editTitulo").value;
+
+                        const descripcion =
+                            document.getElementById("editDescripcion").value;
+
+                        const idPais =
+                            document.getElementById("editPais").value;
+
+                        const idCiudad =
+                            document.getElementById("editCiudad").value;
+
+                        const direccion =
+                            document.getElementById("editDireccion").value;
+
+                        const duracion =
+                            document.getElementById("editDuracion").value;
+
+                        const categoria =
+                            document.getElementById("editCategoria").value;
+
+                        const participantes =
+                            document.getElementById("editParticipantes").value;
+
+                        const fecha =
+                            document.getElementById("editFecha").value;
+
+                        const hora =
+                            document.getElementById("editHora").value;
+
+                        // juntar fecha + hora
+                        const fechaPlan =
+                            fecha + "T" + hora + ":00";
+
+                        // =========================
+                        // FORM DATA
+                        // =========================
+
+                        const formData = new FormData();
+
+                        formData.append("titulo", titulo);
+                        formData.append("descripcion", descripcion);
+                        formData.append("idPais", idPais);
+                        formData.append("idCiudad", idCiudad);
+                        formData.append("direccion", direccion);
+                        formData.append("duracion", duracion);
+                        formData.append("idCategoria", categoria);
+                        formData.append("num_max_participantes", participantes);
+                        formData.append("fecha_plan", fechaPlan);
+
+                        // imagen nueva opcional
+                        const imagenNueva =
+                            document.getElementById("editImagen").files[0];
+
+                        if (imagenNueva) {
+
+                            formData.append("imagen", imagenNueva);
+                        }
+
+                        // =========================
+                        // FETCH
+                        // =========================
+
+                        const response = await fetch(
+                            `http://localhost:8080/planes/${idPlan}`,
+                            {
+                                method: "PUT",
+                                body: formData
+                            }
+                        );
+
+                        if (!response.ok) {
+
+                            throw new Error("Error actualizando plan");
+                        }
+
+                        alert("Plan actualizado 🎉");
+
+                        // cerrar modal
+                        const modal =
+                            bootstrap.Modal.getInstance(
+                                document.getElementById("editarPlanModal")
+                            );
+
+                        modal.hide();
+
+                        // recargar página
+                        window.location.reload();
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                        alert("Error al guardar cambios");
+                    }
+
+                });
+
+        </script>
+
+
+        <script>
+
+            async function cargarPaises() {
+
+                try {
+
+                    const response = await fetch(
+                        "http://localhost:8080/paises"
+                    );
+
+                    const paises = await response.json();
+
+                    const selectPais =
+                        document.getElementById("editPais");
+
+                    selectPais.innerHTML =
+                        `<option value="">Selecciona un país</option>`;
+
+                    paises.forEach(pais => {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = pais.id;
+                        option.textContent = pais.nombre;
+
+                        selectPais.appendChild(option);
+                    });
+
+                } catch (error) {
+
+                    console.error(
+                        "Error cargando países",
+                        error
+                    );
+                }
+            }
+
+        </script>
+
+
+        <script>
+
+            async function cargarCiudades(idPais) {
+
+                try {
+
+                    const response = await fetch(
+                        `http://localhost:8080/ciudades/pais/${idPais}`
+                    );
+
+                    const ciudades =
+                        await response.json();
+
+                    const selectCiudad =
+                        document.getElementById("editCiudad");
+
+                    selectCiudad.innerHTML =
+                        `<option value="">Selecciona una ciudad</option>`;
+
+                    ciudades.forEach(ciudad => {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = ciudad.id_ciudad;
+
+                        option.textContent =
+                            ciudad.nombre;
+
+                        selectCiudad.appendChild(option);
+                    });
+
+                } catch (error) {
+
+                    console.error(
+                        "Error cargando ciudades",
+                        error
+                    );
+                }
+            }
+
+        </script>
+
+
+        <script>
+
+            async function cargarCategorias() {
+
+                try {
+
+                    const response = await fetch(
+                        "http://localhost:8080/categorias"
+                    );
+
+                    const categorias = await response.json();
+
+                    const selectCategoria =
+                        document.getElementById("editCategoria");
+
+                    selectCategoria.innerHTML =
+                        `<option value="">Selecciona una categoría</option>`;
+
+                    categorias.forEach(categoria => {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = categoria.id_categoria;
+
+                        option.textContent = categoria.nombre;
+
+                        selectCategoria.appendChild(option);
+                    });
+
+                } catch (error) {
+
+                    console.error(
+                        "Error cargando categorías",
+                        error
+                    );
+                }
+            }
+
+        </script>
+
+        <script>
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function () {
+
+                    cargarPaises();
+                    cargarCategorias();
+
+                    document
+                        .getElementById("editPais")
+                        .addEventListener("change", function () {
+
+                            const idPais = this.value;
+
+                            if (!idPais) return;
+
+                            cargarCiudades(idPais);
+                        });
+
+                }
+            );
+
+        </script>
+
+    </div>
+</body>
+
+</html>

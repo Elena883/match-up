@@ -1,0 +1,1095 @@
+<!-- consultar_grupo.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar plan</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="barra_navegacion.css">
+    <link rel="stylesheet" href="matchup.css">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="cons-grupo-p" page-transition>
+
+    <div class="main-bg">
+
+        <!-- NAVBAR -->
+        <nav class="navbar topbar">
+
+            <div class="container-fluid">
+
+                <div class="logo-area">
+                    <a href="pantalla_principal.html">
+                        <img src="imagenes/logo_blanco.png" class="logo-icon">
+                    </a>
+                    <a href="pantalla_principal.html">
+                        <span class="logo-text">MATCH-UP</span>
+                    </a>
+                </div>
+
+                <div class="nav-right">
+
+                    <a class="nav-link" href="explorar.html">Explorar</a>
+                    <a class="nav-link" href="mis_planes.html">Mis planes</a>
+                    <a class="nav-link" href="chat.html">Mensajes</a>
+
+                    <div class="dropdown bell">
+
+                        <div role="button" data-bs-toggle="dropdown">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#bdcef5"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-end notif-menu">
+
+                            <div class="notif-header">
+                                <span>Notificaciones</span>
+                                <span>⚙</span>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Importante</small>
+
+                                <p><b>Lucia_12</b> te ha enviado un mensaje</p>
+                                <p><b>Victor_xcx</b> te ha enviado un mensaje</p>
+                            </div>
+
+                            <div class="notif-section">
+                                <small>Más notificaciones</small>
+
+                                <p>Novedades al añadir gente nueva a tus grupos</p>
+                                <p>Nuevo plan cerca de ti: Visita al Museo del Prado</p>
+                                <p>Nueva actualización en tu plan: Concierto de Oasis en el Movistar Arena</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dropdown user-box">
+
+                        <div class="d-flex align-items-center gap-2 dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown">
+
+                            <span id="nombreUsuario">Usuario</span>
+                            <img id="fotoPerfil" src="imagenes/foto_perfil_por_defecto.jpg" class="user-img">
+
+                        </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li><a class="dropdown-item" href="configurar_perfil.html">Perfil</a></li>
+                            <li><a class="dropdown-item" href="chat.html">Mensajes</a></li>
+                            <li><a class="dropdown-item" href="calendario.html">Calendario</a></li>
+                            <li><a class="dropdown-item" href="ajustes.html">Ajustes</a></li>
+
+                            <hr>
+
+                            <li><a class="dropdown-item" href="inicio_sesion.html">Cerrar sesión</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <!-- CONTENIDO -->
+        <div class="container-fluid consultar-container">
+
+            <!-- HERO -->
+            <div class="hero-section">
+
+                <img src="imagenes/Principal_Match_Up.png" class="hero-img" id="grupoImagen">
+
+                <div class="hero-overlay">
+
+                    <h1 id="grupoNombre">Grupo</h1>
+
+                    <div class="hero-info">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ORGANIZADOR -->
+            <div class="content-box organizer-box">
+
+                <div class="organizer-left">
+
+                    <img src="imagenes/foto_perfil_por_defecto.jpg" class="organizer-img" id="grupoFotoCreador">
+
+                    <div>
+                        <p class="organizer-label">Organizado por</p>
+                        <h4 id="grupoCreador">
+                            Usuario
+                        </h4>
+                        <p class="organizer-city" id="grupoCiudad">
+                            Ciudad
+                        </p>
+                    </div>
+
+                </div>
+
+                <button id="btnVerPerfil" class="btn profile-btn">
+                    Ver perfil →
+                </button>
+
+            </div>
+
+
+            <!-- DESCRIPCIÓN -->
+            <div class="content-box">
+
+                <h3>Descripción del grupo</h3>
+
+                <p id="grupoDescripcion">
+                    Descripción
+                </p>
+
+            </div>
+
+
+            <!-- INFO PLAN -->
+            <div class="content-box">
+
+                <h3>Información del grupo</h3>
+
+                <div class="info-grid">
+
+                    <div class="info-item" id="infoCiudad">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-geo-alt-fill me-2" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg> Ciudad
+                    </div>
+
+                    <div class="info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green"
+                            class="bi bi-circle-fill me-2" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8" />
+                        </svg> Plazas disponibles
+                    </div>
+
+                    <div class="info-item" id="infoMiembros">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-people-fill me-2" viewBox="0 0 16 16">
+                            <path
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg> 21/25 personas
+                    </div>
+
+                    <div class="info-item" id="infoGenero">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-gender-female" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5" />
+                        </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-gender-male me-2" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8" />
+                        </svg>
+                    </div>
+
+                    <div class="info-item" id="infoCategoria">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-tag-fill me-2" viewBox="0 0 16 16">
+                            <path
+                                d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                        </svg> Senderismo + 3
+                    </div>
+
+                    <div class="info-item" id="btnVerPlanesGrupo">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                            class="bi bi-calendar-week-fill me-2" viewBox="0 0 16 16">
+                            <path
+                                d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5" />
+                        </svg>
+
+                        Ver planes del grupo →
+
+                    </div>
+
+
+                    <div class="info-item" id="btnEntrarChat">
+
+                        💬 Unete al grupo para entrar al chat →
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAS -->
+            <div class="content-box">
+
+                <h3>Miembros</h3>
+
+                <div class="people-list" id="listaMiembros"></div>
+
+            </div>
+
+
+            <!-- BOTONES -->
+            <div class="action-buttons">
+
+                <button onclick="window.location.href='pantalla_principal.html'" class="btn cancel-btn">
+                    Cancelar
+                </button>
+
+                <button class="btn join-btn" id="btnUnirse">
+                    Unirse al grupo
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <script>
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                async function () {
+
+                    const usuarioLogueado = JSON.parse(
+                        localStorage.getItem("usuarioLogueado")
+                    );
+
+                    const params = new URLSearchParams(
+                        window.location.search
+                    );
+
+                    const idGrupo = params.get("id");
+
+                    if (!idGrupo) {
+
+                        alert("Grupo no válido");
+                        return;
+                    }
+
+                    try {
+
+                        // =========================
+                        // CARGAR GRUPO
+                        // =========================
+
+                        const response = await fetch(
+                            `http://localhost:8080/grupos/${idGrupo}`
+                        );
+
+                        const grupo = await response.json();
+
+                        console.log(grupo);
+
+
+                        const responseMiembros = await fetch(
+                            `http://localhost:8080/grupos/${idGrupo}/miembros`
+                        );
+
+                        const miembros = await responseMiembros.json();
+
+
+
+                        console.log(miembros);
+
+                        // =========================
+                        // HERO
+                        // =========================
+
+                        document.getElementById(
+                            "grupoNombre"
+                        ).textContent = grupo.nombre || "Grupo";
+
+                        document.getElementById(
+                            "grupoDescripcion"
+                        ).textContent = grupo.descripcion || "Sin descripción";
+
+                        // =========================
+                        // IMAGEN GRUPO
+                        // =========================
+
+                        if (grupo.imagen) {
+
+                            document.getElementById(
+                                "grupoImagen"
+                            ).src =
+                                `http://localhost:8080/fotos_grupo/${grupo.imagen}`;
+                        }
+
+                        // =========================
+                        // CREADOR
+                        // =========================
+
+                        if (grupo.creador) {
+
+                            document.getElementById(
+                                "grupoCreador"
+                            ).textContent =
+                                grupo.creador.nombreUsuario || "Usuario";
+
+                            document.getElementById(
+                                "grupoCiudad"
+                            ).textContent =
+                                grupo.creador.ciudad.nombre || "Sin ciudad";
+
+                            // FOTO CREADOR
+
+                            if (grupo.creador.fotoPerfil) {
+
+                                document.getElementById(
+                                    "grupoFotoCreador"
+                                ).src =
+                                    `http://localhost:8080/fotos_perfil/${grupo.creador.fotoPerfil}`;
+                            }
+                        }
+
+                        // =========================
+                        // INFO GRUPO
+                        // =========================
+
+                        // CIUDAD
+
+                        document.getElementById(
+                            "infoCiudad"
+                        ).innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="#004aad"
+                    class="bi bi-geo-alt-fill me-2"
+                    viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                </svg>
+
+                ${grupo.creador?.ciudad?.nombre || "Sin ciudad"}
+            `;
+
+
+
+
+                        // CATEGORÍA
+
+                        document.getElementById(
+                            "infoCategoria"
+                        ).innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="#004aad"
+                    class="bi bi-tag-fill me-2"
+                    viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1z"/>
+                </svg>
+
+                ${grupo.categoria?.nombre || "Sin categoría"}
+            `;
+
+
+
+
+                        document.getElementById(
+                            "infoGenero"
+                        ).innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                        class="bi bi-gender-female" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5" />
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#004aad"
+                        class="bi bi-gender-male me-2" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8" />
+                    </svg>
+
+                        ${grupo.perfilBuscado || "Sin preferencia"}
+                    `;
+
+                        // =========================
+                        // MIEMBROS LISTA
+                        // =========================
+
+                        const totalMiembros = miembros.length;
+
+                        document.getElementById(
+                            "infoMiembros"
+                        ).innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="#004aad"
+                            class="bi bi-people-fill me-2"
+                            viewBox="0 0 16 16">
+
+                            <path
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                        </svg>
+
+                        ${totalMiembros}/${grupo.num_max_miembros} personas
+                    `;
+
+                        if (miembros.length > 0) {
+
+                            miembros.forEach(miembro => {
+
+                                const div = document.createElement("div");
+
+                                div.classList.add("person-card");
+
+                                div.innerHTML = `
+                                <img
+                                    src="${miembro.fotoPerfil
+                                        ? `http://localhost:8080/fotos_perfil/${miembro.fotoPerfil}`
+                                        : 'imagenes/foto_perfil_por_defecto.jpg'
+                                    }"
+                                >
+
+                                <p>${miembro.nombreUsuario}</p>
+                            `;
+
+                                listaMiembros.appendChild(div);
+                            });
+
+                        } else {
+
+                            listaMiembros.innerHTML =
+                                "<p>No hay miembros todavía</p>";
+                        }
+
+                        // =========================
+                        // MODAL PLANES
+                        // =========================
+
+                        document.getElementById(
+                            "btnVerPlanesGrupo"
+                        ).onclick = async function () {
+
+                            try {
+
+                                const lista =
+                                    document.getElementById(
+                                        "listaPlanesGrupo"
+                                    );
+
+                                lista.innerHTML = "";
+
+                                // TU JSON SOLO TIENE 1 PLAN
+                                // grupo.plan
+
+                                if (!grupo.plan) {
+
+                                    lista.innerHTML = `
+                                <div class="no-planes">
+
+                                    <h4>No hay planes todavía</h4>
+
+                                    <p>
+                                        Este grupo aún no ha creado ningún plan.
+                                    </p>
+
+                                </div>
+                            `;
+
+                                } else {
+
+                                    const plan = grupo.plan;
+
+                                    const fecha =
+                                        new Date(
+                                            plan.fecha_plan
+                                        ).toLocaleDateString();
+
+                                    const card =
+                                        document.createElement("div");
+
+                                    card.classList.add(
+                                        "plan-card-modal"
+                                    );
+
+                                    card.innerHTML = `
+
+                                <div class="plan-info">
+
+                                    <h5 class="plan-title">
+                                        ${plan.titulo}
+                                    </h5>
+
+                                    <p class="plan-date">
+                                        📅 ${fecha}
+                                    </p>
+
+                                    <div class="plan-extra">
+                                        Plan del grupo
+                                    </div>
+
+                                </div>
+
+                                <button class="plan-btn">
+                                    Ver plan
+                                </button>
+
+                            `;
+
+                                    card.querySelector("button")
+                                        .onclick = function () {
+
+                                            window.location.href =
+                                                `consultar_plan.html?id=${plan.id}`;
+                                        };
+
+                                    lista.appendChild(card);
+                                }
+
+                                // ABRIR MODAL
+
+                                const modal =
+                                    new bootstrap.Modal(
+                                        document.getElementById(
+                                            "modalPlanesGrupo"
+                                        )
+                                    );
+
+                                modal.show();
+
+                            } catch (error) {
+
+                                console.error(error);
+
+                                alert("Error cargando planes");
+                            }
+                        };
+
+                        // =========================
+                        // BOTÓN UNIRSE / SALIR
+                        // =========================
+
+                        document.getElementById("btnVerPerfil")
+                            .onclick = function () {
+
+                                window.location.href =
+                                    `ver_perfil.html?id=${usuarioLogueado.id}`;
+                            };
+
+                        const btn =
+                            document.getElementById(
+                                "btnUnirse"
+                            );
+
+                        let esMiembro = false;
+                        let esCreador = false;
+
+                        // comprobar miembros
+
+                        console.log(usuarioLogueado);
+
+                        miembros.forEach(miembro => {
+
+                            if (
+                                usuarioLogueado &&
+                                miembro.idUsuario === usuarioLogueado.id
+                            ) {
+
+                                esMiembro = true;
+                            }
+                        });
+
+                        // comprobar creador
+
+                        if (
+                            grupo.creador &&
+                            usuarioLogueado &&
+                            grupo.creador.id === usuarioLogueado.id
+                        ) {
+
+                            esCreador = true;
+                        }
+
+                        // =========================
+                        // CREADOR
+                        // =========================
+
+                        // =========================
+                        // CREADOR
+                        // =========================
+
+                        if (esCreador) {
+
+                            btn.textContent = "Eliminar grupo";
+
+                            btn.classList.remove("join-btn");
+                            btn.classList.add("cancel-btn");
+
+                            btn.onclick = async function () {
+
+                                const confirmar =
+                                    confirm("¿Seguro que quieres eliminar el grupo?");
+
+                                if (!confirmar) return;
+
+                                try {
+
+                                    const response = await fetch(
+                                        `http://localhost:8080/grupos/${idGrupo}/eliminar/${usuarioLogueado.id}`,
+                                        {
+                                            method: "DELETE"
+                                        }
+                                    );
+
+                                    if (!response.ok) {
+
+                                        throw new Error();
+                                    }
+
+                                    alert("Grupo eliminado 🗑");
+
+                                    window.location.href =
+                                        "mis_planes.html";
+
+                                } catch (error) {
+
+                                    console.error(error);
+
+                                    alert("Error eliminando grupo");
+                                }
+                            };
+
+                            // =========================
+                            // BOTÓN EDITAR
+                            // =========================
+
+                            if (!document.getElementById("btnEditarGrupo")) {
+
+                                const editBtn =
+                                    document.createElement("button");
+
+                                editBtn.id = "btnEditarGrupo";
+
+                                editBtn.textContent =
+                                    "Editar grupo";
+
+                                editBtn.classList.add(
+                                    "btn",
+                                    "profile-btn"
+                                );
+
+                                editBtn.setAttribute(
+                                    "data-bs-toggle",
+                                    "modal"
+                                );
+
+                                editBtn.setAttribute(
+                                    "data-bs-target",
+                                    "#editarGrupoModal"
+                                );
+
+                                document.querySelector(
+                                    ".action-buttons"
+                                ).appendChild(editBtn);
+                            }
+
+                            // =========================
+                            // CARGAR CATEGORIAS
+                            // =========================
+
+                            const responseCategorias =
+                                await fetch("http://localhost:8080/categorias");
+
+                            const categorias =
+                                await responseCategorias.json();
+
+                            const selectCategoria =
+                                document.getElementById("editCategoria");
+
+                            selectCategoria.innerHTML = "";
+
+                            categorias.forEach(categoria => {
+
+                                const option =
+                                    document.createElement("option");
+
+                                option.value = categoria.id_categoria;
+                                option.textContent = categoria.nombre;
+
+                                if (grupo.categoria &&
+                                    grupo.categoria.id_categoria === categoria.id_categoria) {
+
+                                    option.selected = true;
+                                }
+
+                                selectCategoria.appendChild(option);
+                            });
+
+                            // =========================
+                            // RELLENAR INPUTS
+                            // =========================
+
+                            document.getElementById("editNombre").value =
+                                grupo.nombre || "";
+
+                            document.getElementById("editDescripcion").value =
+                                grupo.descripcion || "";
+
+                            document.getElementById("editMaxMiembros").value =
+                                grupo.num_max_miembros || "";
+
+
+                            // =========================
+                            // GUARDAR CAMBIOS
+                            // =========================
+
+                            document.getElementById(
+                                "btnGuardarGrupo"
+                            ).onclick = async function () {
+
+                                try {
+
+                                    const formData = new FormData();
+
+                                    formData.append(
+                                        "nombre",
+                                        document.getElementById("editNombre").value
+                                    );
+
+                                    formData.append(
+                                        "descripcion",
+                                        document.getElementById("editDescripcion").value
+                                    );
+
+                                    formData.append(
+                                        "categoriaId",
+                                        document.getElementById("editCategoria").value
+                                    );
+
+                                    formData.append(
+                                        "num_max_miembros",
+                                        document.getElementById("editMaxMiembros").value
+                                    );
+
+                                    const imagen =
+                                        document.getElementById("editImagen").files[0];
+
+                                    if (imagen) {
+
+                                        formData.append("imagen", imagen);
+                                    }
+
+                                    const response = await fetch(
+
+                                        `http://localhost:8080/grupos/${idGrupo}`,
+
+                                        {
+                                            method: "PUT",
+                                            body: formData
+                                        }
+                                    );
+
+                                    if (!response.ok) {
+
+                                        throw new Error();
+                                    }
+
+                                    alert("Grupo actualizado ✅");
+
+                                    window.location.reload();
+
+                                } catch (error) {
+
+                                    console.error(error);
+
+                                    alert("Error actualizando grupo");
+                                }
+                            };
+
+
+                            document.getElementById(
+                                "btnEntrarChat"
+                            ).onclick = function () {
+
+                                window.location.href =
+                                    `chat.html?idGrupo=${idGrupo}`;
+                            };
+                        }
+
+                        // =========================
+                        // MIEMBRO
+                        // =========================
+
+                        else if (esMiembro) {
+
+                            btn.textContent =
+                                "Salir del grupo";
+
+                            btn.classList.remove("join-btn");
+
+                            btn.classList.add("cancel-btn");
+
+                            btn.onclick = async function () {
+
+                                try {
+
+                                    const response = await fetch(
+                                        `http://localhost:8080/grupos/${idGrupo}/salir/${usuarioLogueado.id}`,
+                                        {
+                                            method: "DELETE"
+                                        }
+                                    );
+
+                                    if (!response.ok) {
+
+                                        throw new Error();
+                                    }
+
+                                    alert("Has salido del grupo");
+
+                                    window.location.reload();
+
+                                } catch (error) {
+
+                                    console.error(error);
+
+                                    alert("Error saliendo del grupo");
+                                }
+                            };
+
+                            document.getElementById(
+                                "btnEntrarChat"
+                            ).onclick = function () {
+
+                                window.location.href =
+                                    `chat.html?idGrupo=${idGrupo}`;
+                            };
+                        }
+
+                        // =========================
+                        // NO ES MIEMBRO
+                        // =========================
+
+                        else {
+
+                            btn.textContent =
+                                "Unirse al grupo";
+
+                            btn.onclick = async function () {
+
+                                try {
+
+                                    const response = await fetch(
+                                        `http://localhost:8080/grupos/${idGrupo}/unirse/${usuarioLogueado.id}`,
+                                        {
+                                            method: "POST"
+                                        }
+                                    );
+
+                                    if (!response.ok) {
+
+                                        const mensaje =
+                                            await response.text();
+
+                                        alert(mensaje);
+
+                                        return;
+                                    }
+
+                                    alert("Te has unido al grupo 🎉");
+
+                                    window.location.reload();
+
+                                } catch (error) {
+
+                                    console.error(error);
+
+                                    alert("Error uniéndose");
+                                }
+                            };
+                        }
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                        alert("Error cargando grupo");
+                    }
+                }
+            );
+
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const usuarioLogueado = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                if (!usuarioLogueado) {
+                    window.location.href = "inicio_sesion.html";
+                    return;
+                }
+
+                document.getElementById("nombreUsuario").textContent =
+                    usuarioLogueado.nombreUsuario || usuarioLogueado.nombre;
+
+                if (usuarioLogueado.fotoPerfil) {
+                    document.getElementById("fotoPerfil").src =
+                        "http://localhost:8080/fotos_perfil/" +
+                        usuarioLogueado.fotoPerfil;
+                }
+
+            });
+        </script>
+
+
+
+
+
+        <!-- MODAL PLANES DEL GRUPO -->
+        <div class="modal fade" id="modalPlanesGrupo" tabindex="-1">
+
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                <div class="modal-content editar-modal">
+
+                    <!-- HEADER -->
+                    <div class="editar-header">
+
+                        <h2>Planes del grupo</h2>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body">
+
+                        <div id="listaPlanesGrupo"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MODAL EDITAR GRUPO -->
+        <div class="modal fade" id="editarGrupoModal" tabindex="-1">
+
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                <div class="modal-content editar-modal">
+
+                    <!-- HEADER -->
+                    <div class="editar-header">
+
+                        <h2>Editar grupo</h2>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body">
+
+                        <!-- NOMBRE -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input type="text" class="form-control" id="editNombre">
+
+                        </div>
+
+                        <!-- DESCRIPCION -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Descripción
+                            </label>
+
+                            <textarea class="form-control" id="editDescripcion" rows="4"></textarea>
+
+                        </div>
+
+                        <!-- CATEGORIA -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Categoría
+                            </label>
+
+                            <select class="form-select" id="editCategoria">
+                            </select>
+
+                        </div>
+
+                        <!-- MAX MIEMBROS -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Máximo miembros
+                            </label>
+
+                            <input type="number" class="form-control" id="editMaxMiembros">
+
+                        </div>
+
+                        <!-- IMAGEN -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Imagen
+                            </label>
+
+                            <input type="file" class="form-control" id="editImagen">
+
+                        </div>
+
+                        <!-- BOTON -->
+                        <button class="btn join-btn w-100" id="btnGuardarGrupo">
+
+                            Guardar cambios
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
